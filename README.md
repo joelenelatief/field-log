@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Tailwind + GSAP + Builder.io Starter
+
+This is a modern web application starter template that combines:
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [GSAP](https://greensock.com/gsap/) - Professional-grade animation library
+- [Builder.io](https://builder.io/) - Visual CMS for your team
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root directory and add your Builder.io API key:
+
+```bash
+NEXT_PUBLIC_BUILDER_API_KEY=your_api_key_here
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🎨 Styling with Tailwind CSS
 
-## Learn More
+- Utility-first CSS framework
+- Fully customizable design system
+- PostCSS configuration included
 
-To learn more about Next.js, take a look at the following resources:
+### ✨ Animations with GSAP
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Pre-configured GSAP setup with ScrollTrigger
+- Utility functions for common animations:
+  - `fadeIn`: Fade in elements
+  - `slideIn`: Slide in elements from any direction
+  - `scrollAnimation`: Create scroll-triggered animations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 📝 Content Management with Builder.io
 
-## Deploy on Vercel
+- Visual content editing
+- Component-based architecture
+- Preview mode support
+- Easy integration with existing components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🚀 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This template is optimized for deployment on Vercel. For the best experience:
+
+1. Push your code to GitHub
+2. Import your repository to Vercel
+3. Add your environment variables
+4. Deploy!
+
+## Project Structure
+
+```
+src/
+├── app/              # Next.js app directory
+├── components/       # React components
+└── lib/             # Utility functions
+    ├── builder.ts   # Builder.io configuration
+    └── gsap.ts      # GSAP animations
+```
+
+## Builder.io Setup
+
+1. Create an account at [Builder.io](https://builder.io)
+2. Create a new space
+3. Get your API key from the settings page
+4. Add your API key to `.env.local`
+5. Create a new page model in Builder.io
+6. Start creating content!
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
