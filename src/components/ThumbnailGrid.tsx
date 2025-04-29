@@ -37,10 +37,10 @@ export const ThumbnailGrid: React.FC = () => {
         duration: 0.6,
         ease: 'sine.inOut',
         onComplete: () => {
-          if (leftImgRef.current) {
+          if (leftImgRef.current && activeIndex !== null) {
             leftImgRef.current.src = leftImages[activeIndex];
           }
-          if (rightImgRef.current) {
+          if (rightImgRef.current && activeIndex !== null) {
             rightImgRef.current.src = rightImages[activeIndex];
           }
         },
@@ -53,13 +53,31 @@ export const ThumbnailGrid: React.FC = () => {
     }
   }, [activeIndex]);
 
+  const totalImages = leftImages.length;
+
+  const goToPrevious = () => {
+    setActiveIndex((prevIndex) => {
+      if (prevIndex === null) return 0;
+      return prevIndex === 0 ? totalImages - 1 : prevIndex - 1;
+    });
+  };
+
+  const goToNext = () => {
+    setActiveIndex((prevIndex) => {
+      if (prevIndex === null) return 0;
+      return prevIndex === totalImages - 1 ? 0 : prevIndex + 1;
+    });
+  };
+
   return (
     <>
       <CustomCursor />
       <section className="mt-10 flex flex-col items-center gap-8">
         <div className="flex flex-col justify-center overflow-hidden rounded-lg border border-neutral-300 bg-[#EBEDDFE5] p-8 pb-8 transition-shadow duration-300 ease-in-out hover:shadow-md md:flex-row md:items-stretch">
-          {/* Left Image Container */}
-          <div className="relative w-full md:w-[439px]">
+          <div
+            className="relative w-full cursor-pointer md:w-[439px]"
+            onClick={goToPrevious}
+          >
             <div className="aspect-[439/477] w-full shadow-md">
               <img
                 ref={leftImgRef}
@@ -75,11 +93,12 @@ export const ThumbnailGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* Vertical Divider */}
           <div className="mx-4 hidden w-px bg-neutral-300 md:block"></div>
 
-          {/* Right Image Container */}
-          <div className="relative mt-4 w-full md:mt-0 md:w-[439px]">
+          <div
+            className="relative mt-4 w-full cursor-pointer md:mt-0 md:w-[439px]"
+            onClick={goToNext}
+          >
             <div className="aspect-[439/284] w-full shadow-md">
               <img
                 ref={rightImgRef}
@@ -106,21 +125,21 @@ export const ThumbnailGrid: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center gap-4 max-sm:flex-wrap max-sm:justify-center">
+        <div className="flex justify-center gap-4 [perspective:1000px] max-sm:flex-wrap max-sm:justify-center">
           {leftImages.map((image, index) => (
             <div
               key={`thumb-${index}`}
               onMouseEnter={() => setActiveIndex(index)}
-              className={`relative h-[200px] w-[150px] origin-bottom-left cursor-none bg-zinc-100 transition-all duration-300 ${
+              className={`transform-preserve-3d relative h-[200px] w-[150px] origin-center cursor-none bg-zinc-100 transition-all duration-300 ${
                 activeIndex === index
-                  ? 'z-10 scale-[1.01] bg-zinc-200 shadow-lg'
-                  : 'z-0 scale-100'
+                  ? 'z-10 scale-[1] rotate-y-10 bg-zinc-200 shadow-lg'
+                  : 'z-0 scale-100 rotate-y-0'
               }`}
             >
               <img
                 src={image}
                 alt={`Thumbnail ${index}`}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover backface-hidden"
               />
             </div>
           ))}
