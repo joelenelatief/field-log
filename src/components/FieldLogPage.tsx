@@ -8,11 +8,14 @@ const FieldLogPage: React.FC = () => {
   return (
     <>
       <CustomCursor />
-      <div className="w-full cursor-none p-5 text-neutral-700">
-        <h2 className="mx-0 text-center text-3xl font-bold max-sm:text-2xl">
-          <span className={neueHaasDisplay.className}>Coming Soon 2025. </span>
+      <div className="w-full cursor-none pt-5 text-neutral-700">
+        <h2 className="mx-0 mb-0 pb-2 text-center text-3xl font-bold max-sm:text-2xl sm:pb-0">
+          <span className={`${neueHaasDisplay.className}`}>
+            Coming Soon 2025.{' '}
+          </span>
+          <br className="sm:hidden" />
           <span
-            className={`ml-2 border-b-2 border-neutral-500 italic ${halTimezone.className}`}
+            className={`border-b-2 border-neutral-500 italic sm:ml-2 ${halTimezone.className}`}
           >
             Preorder Now
           </span>

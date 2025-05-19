@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${robotoMono.variable} ${neueHaasDisplay.variable}`}
+      className={`cursor-none ${inter.variable} ${robotoMono.variable} ${neueHaasDisplay.variable}`}
     >
       <body>{children}</body>
     </html>
