@@ -1,12 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-// Import the SVG using the path alias
-import WhiteArrow from '../images/whiteArrow.svg';
 
 export const CustomCursor: React.FC = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
-  // Add state for cursor side
-  const [cursorSide, setCursorSide] = useState<'left' | 'right'>('right');
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -15,10 +11,6 @@ export const CustomCursor: React.FC = () => {
     if (typeof window !== 'undefined') {
       const updateCursorPosition = (e: MouseEvent) => {
         setCursorPosition({ x: e.clientX, y: e.clientY });
-
-        // Check screen side and update state
-        const screenWidth = window.innerWidth;
-        setCursorSide(e.clientX < screenWidth / 2 ? 'left' : 'right');
       };
 
       window.addEventListener('mousemove', updateCursorPosition);

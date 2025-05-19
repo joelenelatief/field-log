@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import AppLayout from '@/components/Layout';
 import { inter, robotoMono, halTimezone, neueHaasDisplay } from '@/lib/fonts';

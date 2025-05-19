@@ -3,6 +3,11 @@ const nextConfig = {
   // Keep any existing configurations you have here
   reactStrictMode: true,
 
+  // Add images configuration to allow the cdn.builder.io domain
+  images: {
+    domains: ['cdn.builder.io'],
+  },
+
   // Add this webpack configuration
   webpack(config) {
     // Grab the existing rule that handles SVG imports

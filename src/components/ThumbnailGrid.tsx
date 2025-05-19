@@ -5,6 +5,7 @@ import { CustomCursor } from './CustomCursor';
 import { Dot } from './Dot';
 import { neueHaasDisplay } from '@/lib/fonts';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 export const leftImages = [
   'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F502f64d86de04a469c99cedb0d6186b7',
@@ -196,11 +197,13 @@ export const ThumbnailGrid: React.FC = () => {
             onClick={goToPrevious}
           >
             <div className="aspect-[439/477] w-full shadow-md">
-              <img
+              <Image
                 ref={leftImgRef}
                 src={leftImages[activeIndex ?? 0]}
                 alt="Thumbnail"
                 className="h-full w-full object-cover"
+                width={439}
+                height={477}
               />
             </div>
             <div
@@ -217,11 +220,13 @@ export const ThumbnailGrid: React.FC = () => {
             onClick={goToNext}
           >
             <div className="aspect-[439/284] w-full shadow-md">
-              <img
+              <Image
                 ref={rightImgRef}
                 src={rightImages[activeIndex ?? 0]}
                 alt="Thumbnail"
                 className="h-full w-full object-cover"
+                width={439}
+                height={284}
               />
             </div>
             <div
@@ -257,10 +262,12 @@ export const ThumbnailGrid: React.FC = () => {
                   : 'z-0 scale-100 rotate-y-0'
               }`}
             >
-              <img
+              <Image
                 src={image}
                 alt={`Thumbnail ${index}`}
                 className="h-full w-full object-cover backface-hidden"
+                width={170}
+                height={220}
               />
               {activeIndex === index && (
                 <>

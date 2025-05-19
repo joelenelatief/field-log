@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { CustomCursor } from './CustomCursor';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
+import Image from 'next/image';
 
 // Sample product data (placeholder)
 const PRODUCTS = [
@@ -87,10 +88,12 @@ const ShopPage: React.FC = () => {
               {/* Center column - Product image (3/7 width = 1.5x the side columns) */}
               <div className="flex justify-center md:col-span-3">
                 <div className="aspect-square w-full overflow-hidden border-1 border-black bg-[#EBEDDFE5] p-3">
-                  <img
+                  <Image
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
                     className="h-full w-full object-cover transition-transform hover:scale-105"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -150,10 +153,12 @@ const ShopPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="aspect-square overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
                       className="h-full w-full object-cover transition-transform hover:scale-105"
+                      width={400}
+                      height={400}
                     />
                   </div>
                 </div>

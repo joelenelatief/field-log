@@ -6,6 +6,7 @@ import { CustomCursor } from './CustomCursor';
 import { Dot } from './Dot'; // Import the Dot component from ThumbnailGrid
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 // Define the section images
 const SECTION_IMAGES = [
@@ -65,11 +66,6 @@ const AboutPage: React.FC = () => {
   const gridRef = useRef<HTMLDivElement>(null);
   const sectionContainerRef = useRef<HTMLDivElement>(null);
 
-  // Get the index of the active section
-  const activeSectionIndex = SECTION_IMAGES.findIndex(
-    (section) => section.id === activeSection
-  );
-
   useEffect(() => {
     // Animation for the section grid
     if (gridRef.current) {
@@ -123,27 +119,29 @@ const AboutPage: React.FC = () => {
                     </p>
                     <p className="mb-4 text-sm">
                       The stories shared follow my journeys through many of the
-                      earth's wildest places, and then use these experiences to
-                      frame the story of our work to keep nature resilient.
-                      Collectively, the stories provide a first person view
-                      through the window of nature based solutions to show how
-                      conservation happens, and why it is more essential than
-                      ever to get us through our technologically obsessed
-                      twenty-first century, and far beyond.
+                      earth&apos;s wildest places, and then use these
+                      experiences to frame the story of our work to keep nature
+                      resilient. Collectively, the stories provide a first
+                      person view through the window of nature based solutions
+                      to show how conservation happens, and why it is more
+                      essential than ever to get us through our technologically
+                      obsessed twenty-first century, and far beyond.
                     </p>
                   </div>
                   <div className="mt-4 pr-6 md:mt-0 md:w-2/7">
-                    <img
+                    <Image
                       src="/images/car.png"
                       alt="Land Rover in landscape"
                       className="h-auto w-full rounded-md shadow-sm"
+                      width={300}
+                      height={200}
                     />
                   </div>
                 </div>
                 <div className="mt-6 px-12 text-center text-lg italic">
-                  " Eating the Last of the Wild, is a wonderful collection of
-                  essays reflecting on his lifetime of work with nature
-                  conservation. "
+                  &quot; Eating the Last of the Wild, is a wonderful collection
+                  of essays reflecting on his lifetime of work with nature
+                  conservation. &quot;
                 </div>
               </div>
               <div className="flex-1">
@@ -214,7 +212,7 @@ const AboutPage: React.FC = () => {
                 <p className={`mb-4 text-sm ${halTimezone.className}`}>
                   We believe in fair compensation, sustainable practices, and
                   preserving cultural heritage. By supporting our artisan
-                  partners, you're helping to maintain these valuable
+                  partners, you&apos;re helping to maintain these valuable
                   traditions.
                 </p>
                 <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -286,9 +284,9 @@ const AboutPage: React.FC = () => {
                     </p>
                     <p className={`mb-4 text-sm ${halTimezone.className}`}>
                       We believe that by preserving these crafts and supporting
-                      the artisans who create them, we're helping to maintain
-                      important cultural traditions while providing unique,
-                      meaningful products to our community.
+                      the artisans who create them, we&apos;re helping to
+                      maintain important cultural traditions while providing
+                      unique, meaningful products to our community.
                     </p>
                   </div>
                 </div>
@@ -379,10 +377,12 @@ const AboutPage: React.FC = () => {
                   : 'z-0 scale-100 rotate-y-0'
               }`}
             >
-              <img
+              <Image
                 src={section.image}
                 alt={section.title}
                 className="h-full w-full object-cover backface-hidden"
+                width={170}
+                height={220}
               />
               {activeSection === section.id && (
                 <>
