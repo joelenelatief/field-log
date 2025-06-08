@@ -6,7 +6,6 @@ import { CustomCursor } from './CustomCursor';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 import { gsap } from 'gsap';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
 
 // Define the magazine spreads data
 const magazineSpreads = [
