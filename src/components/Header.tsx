@@ -35,15 +35,17 @@ const Header: React.FC = () => {
   return (
     <header
       ref={headerRef}
-      className="relative flex w-full items-center justify-between border-b border-gray-200 bg-white px-8 py-4"
+      className="relative flex w-full items-center justify-between border-b border-black px-8 py-4"
     >
       {/* Left side - FIELD LOG branding */}
       <div className="flex items-center space-x-8">
         <Link
           href="/"
-          className={`text-lg font-bold tracking-wider ${neueHaasDisplay.className} text-black`}
+          className={`text-lg font-semibold ${neueHaasDisplay.className} flex items-center space-x-3 text-black`}
         >
-          FIELD ———————— LOG
+          <span>FIELD</span>
+          <div className="h-px w-16 bg-black"></div>
+          <span>LOG</span>
         </Link>
 
         <nav className="hidden space-x-6 md:flex">

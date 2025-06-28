@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import AppLayout from '@/components/Layout';
-import { inter, robotoMono, halTimezone, neueHaasDisplay } from '@/lib/fonts';
+import {
+  inter,
+  robotoMono,
+  halTimezone,
+  neueHaasDisplay,
+  abcRomMono,
+} from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Field Log',
@@ -16,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${robotoMono.variable} ${neueHaasDisplay.variable} ${halTimezone.variable}`}
+      className={`${inter.variable} ${robotoMono.variable} ${neueHaasDisplay.variable} ${halTimezone.variable} ${abcRomMono.variable}`}
     >
       <body>
         <AppLayout>{children}</AppLayout>

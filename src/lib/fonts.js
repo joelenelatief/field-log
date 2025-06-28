@@ -49,3 +49,14 @@ export const neueHaasDisplay = localFont({
   ],
   variable: '--font-neue-haas-display',
 });
+
+export const abcRomMono = localFont({
+  src: [
+    {
+      path: '../fonts/ABCROMMono-Regular-Trial.otf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-abc-rom-mono',
+});
