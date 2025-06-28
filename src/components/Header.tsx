@@ -9,36 +9,23 @@ import { usePathname } from 'next/navigation';
 
 const Header: React.FC = () => {
   const headerRef = useRef<HTMLElement>(null);
-  const pathname = usePathname(); // Get the current path
+  const pathname = usePathname();
 
   useEffect(() => {
     if (headerRef.current) {
-      // Create a separate element for the border animation
-      const borderElement = document.createElement('div');
-      borderElement.style.position = 'absolute';
-      borderElement.style.left = '0';
-      borderElement.style.right = '0';
-      borderElement.style.bottom = '0';
-      borderElement.style.height = '1px';
-      borderElement.style.opacity = '0.2';
-      borderElement.style.backgroundColor = 'black';
-      borderElement.style.transform = 'scaleX(0)';
-      borderElement.style.transformOrigin = 'left';
-
-      // Append it to the header
-      headerRef.current.appendChild(borderElement);
-
-      // Animate it
-      gsap.to(borderElement, {
-        scaleX: 1,
-        duration: 1,
-        ease: 'power2.inOut',
-        delay: 0.7, // Slightly later than other animations
-      });
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: -10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        }
+      );
     }
   }, []);
 
-  // Function to determine if a link is active
   const isActive = (path: string) => {
     if (path === '/' && pathname === '/') return true;
     if (path !== '/' && pathname.startsWith(path)) return true;
@@ -48,46 +35,46 @@ const Header: React.FC = () => {
   return (
     <header
       ref={headerRef}
-      className="relative flex w-full items-center justify-between p-5 text-black"
+      className="relative flex w-full items-center justify-between border-b border-gray-200 bg-white px-8 py-4"
     >
-      {/* Left side navigation */}
-      <nav className="flex gap-8">
+      {/* Left side - FIELD LOG branding */}
+      <div className="flex items-center space-x-8">
         <Link
           href="/"
-          className={`text-md relative font-bold ${neueHaasDisplay.className} text-black/70 ${
-            isActive('/') ? 'active-link' : ''
-          }`}
+          className={`text-lg font-bold tracking-wider ${neueHaasDisplay.className} text-black`}
         >
-          HOME
-          {isActive('/') && (
-            <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-black/70"></span>
-          )}
+          FIELD ———————— LOG
         </Link>
-        <Link
-          href="/about"
-          className={`text-md relative font-bold ${neueHaasDisplay.className} text-black/70 ${
-            isActive('/about') ? 'active-link' : ''
-          }`}
-        >
-          ABOUT US
-          {isActive('/about') && (
-            <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-black/70"></span>
-          )}
-        </Link>
-      </nav>
+
+        <nav className="hidden space-x-6 md:flex">
+          <Link
+            href="/"
+            className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
+              isActive('/') ? 'border-b border-black' : ''
+            }`}
+          >
+            HOME
+          </Link>
+          <Link
+            href="/about"
+            className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
+              isActive('/about') ? 'border-b border-black' : ''
+            }`}
+          >
+            ABOUT US
+          </Link>
+        </nav>
+      </div>
 
       {/* Right side navigation */}
       <nav>
         <Link
           href="/shop"
-          className={`text-md relative font-bold ${neueHaasDisplay.className} text-black/70 ${
-            isActive('/shop') ? 'active-link' : ''
+          className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
+            isActive('/shop') ? 'border-b border-black' : ''
           }`}
         >
           SHOP ALL
-          {isActive('/shop') && (
-            <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-black/70"></span>
-          )}
         </Link>
       </nav>
     </header>

@@ -5,7 +5,7 @@ import { inter, robotoMono, halTimezone, neueHaasDisplay } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Field Log',
-  description: 'A curated chronicle of Latin American textile artisans',
+  description: 'Documenting history, craft, and heritage through storytelling',
 };
 
 export default function RootLayout({
