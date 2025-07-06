@@ -43,59 +43,54 @@ const magazineSpreads = [
   {
     id: 2,
     image: '/images/image2.png',
-    title: 'OUR PROCESS',
-    text: `We travel.
-We listen.
-We document.
+    title: 'WHAT TO EXPECT',
+    text: `(What to expect an artisan from Field-Log Book)
 
-    In workshops across Latin America,
-    we meet artisans who carry forward
-    centuries of knowledge.
+This book connects you with artisans so you can bring your 
+vision to life. Here's what to expect - and what's expected 
+of you - if you want to collaborate with an artisan:
 
-        Their hands shape clay,
-        weave textiles,
-        craft leather,
-        create beauty.
+i. RESPECT + COMMUNICATION
+Start with respect. Understand the artisan's craft, 
+materials, and design process. Communicate clearly and set 
+expectations. Many artisans primarily speak Spanish - be 
+ready to use Spanish or a translator.
 
-We capture these moments.
-    We share these stories.
-        We bridge cultures.
+ii. SMALL BATCHES + TIMELINES
+Most artisans work in small batches - under 100 units - to 
+ensure quality. If you need higher volumes, discuss it early. 
+Handcrafted work takes time, and timelines can shift. 
+Stay flexible.
 
-    From Perú to Colombia,
-    from Guatemala to beyond,
-        we chronicle the makers
-        who keep tradition alive
-        while pushing it forward.
-
-This is fieldwork.
-    This is our log.`,
+iii. SUPPORT
+We are a studio dedicated to amplifying artisans' stories -
+bringing their culture to life through brand, design, and 
+communication. Field Log is here to guide you. Reach out 
+anytime.`,
     attribution: 'CUZCO - PERU 2024',
   },
   {
     id: 3,
     image: '/images/image3.png',
-    title: 'OUR VALUES',
-    text: `If you're here for craft,
-start with respect.
+    title: 'MANIFESTO',
+    text: `(How to connect with an artisan from Field-Log Book)
 
-    If you're here for speed,
-    you're in the wrong book.
-
-If you want to connect with an artisan - 
-    contact us for an introduction.
-
-        If you want to learn more about our work,
-        read on.
-
-    If you want to collaborate,
-    we'd love to hear from you.
-
-Every piece tells a story.
-    Every artisan has a voice.
-        Every collaboration builds something meaningful.
-
-This is how we work.
-    This is who we are.`,
+i.                          If you're here for craft,
+ii.                             start with respect.
+iii.                   If you're here for speed,
+iv.                       you're in the wrong book.
+v.                        If you want to connect with an artisan -
+vi.                         and need help, contact us for an introduction.
+vii.                    Come with curiosity.
+viii.                    Come with care.
+ix.                     Come with patience.
+x.                     Each taller, is not just a place of production.
+xi.                  Each taller, is a world.
+xii.                    a culture.
+xiii.                   a community.
+xiv.         We are observers, learning from the field.
+xv.                   We are listeners.
+xvii.                  We are Field-Log.`,
     attribution: 'GUATEMALA CITY - 2024',
   },
 ];
@@ -182,10 +177,10 @@ const AboutPage: React.FC = () => {
                 <Image
                   src="/images/bigWindow.png"
                   alt="Mountain view through window"
-                  width={800}
+                  width={300}
                   height={400}
                   className="object-cover"
-                  style={{ height: '600px', width: 'auto' }}
+                  style={{ height: '400px', width: 'auto' }}
                 />
               </div>
             </div>
@@ -199,7 +194,7 @@ const AboutPage: React.FC = () => {
             {/* Left Column - Image (1/5 width on desktop) */}
             <div className="space-y-4 md:col-span-2">
               {/* Purple/Pink Color Bar */}
-              <div className="h-3 w-20 bg-purple-400"></div>
+              <div className="h-3 w-20 rounded border border-black bg-[#B55F92]"></div>
 
               {/* Attribution */}
               <div>
@@ -234,9 +229,9 @@ const AboutPage: React.FC = () => {
             </div>
 
             {/* Right Column - Text (4/5 width on desktop) */}
-            <div className="space-y-6 text-black md:col-span-6">
+            <div className="space-y-6 pl-12 text-black md:col-span-6">
               {/* Yellow Color Bar */}
-              <div className="h-3 w-20 bg-yellow-300"></div>
+              <div className="h-3 w-20 rounded border border-black bg-[#FFF8BA]"></div>
 
               {/* Title */}
               <h1 className={`text-xl font-bold ${neueHaasDisplay.className}`}>
@@ -245,7 +240,7 @@ const AboutPage: React.FC = () => {
 
               {/* Main Text with Staggered Spacing */}
               <div
-                className={`text-sm leading-relaxed ${halTimezone.className}`}
+                className={`text-md leading-relaxed ${halTimezone.className}`}
               >
                 <pre className="font-[inherit] whitespace-pre-wrap">
                   {currentSlide.text}
