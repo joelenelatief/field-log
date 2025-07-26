@@ -13,22 +13,22 @@ const magazineSpreads = [
     id: 1,
     image: '/images/image1.png',
     title: 'DEAR [READER]',
-    text: `We are students—          
+    text: `We are students—         
     building, creating, and shaping amid uncertainty.
-                                     Not in spite of it, but with it.                         
-                                     Uncertainty doesn't scare us -                          
+                                     Not in spite of it, but with it.                        
+                                     Uncertainty doesn't scare us -                         
                                      It keeps us curious, present, and paying attention.
 
-                                  Imagine this:                             
-                                  There's a thunderstorm- lightning cracking                              
+                                  Imagine this:                            
+                                  There's a thunderstorm- lightning cracking                             
                                   And you—you're in a room, watching the storm 
-                And that's the difference.
-                                     Lightning doesn't strike those who sit still.                                      
-                                     It finds the ones in motion—                              
+               And that's the difference.
+                                     Lightning doesn't strike those who sit still.                                     
+                                     It finds the ones in motion—                             
                                      the ones who observe, who listen, 
                              who move toward mystery.
 
-           Our work is guided by that same motion.                                
+           Our work is guided by that same motion.                               
            We chase ideas. 
                                       We embrace the what-ifs, 
                                                        We honor instinct.

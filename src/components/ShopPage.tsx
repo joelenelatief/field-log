@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { CustomCursor } from './CustomCursor';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Sample product data (placeholder)
 const PRODUCTS = [
@@ -130,9 +131,10 @@ const ShopPage: React.FC = () => {
           <div className="mb-12">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {PRODUCTS.slice(0, 3).map((product) => (
-                <div
+                <Link
                   key={product.id}
-                  className={`cursor-pointer overflow-hidden rounded-sm transition-all ${
+                  href={`/shop/${product.id}`}
+                  className={`block cursor-pointer overflow-hidden rounded-sm transition-all ${
                     selectedProduct.id === product.id ? 'ring-1 ring-black' : ''
                   }`}
                   onClick={() => setSelectedProduct(product)}
@@ -161,7 +163,7 @@ const ShopPage: React.FC = () => {
                       height={400}
                     />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
