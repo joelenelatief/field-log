@@ -133,7 +133,7 @@ const FieldLogPage: React.FC = () => {
         <div className="flex flex-1 flex-col">
           <div ref={mainAreaRef} className="flex-1 p-8">
             {/* 3-Column Layout: Numbers | Image | Location */}
-            <div className="mb-8 min-h-[600px]">
+            <div className="mb-4 min-h-[400px] lg:mb-8 lg:min-h-[600px]">
               {/* Mobile Layout */}
               <div className="flex items-center gap-4 lg:hidden">
                 {/* Left Numbers */}
@@ -213,7 +213,7 @@ const FieldLogPage: React.FC = () => {
               </div>
 
               {/* Location Info for Mobile */}
-              <div className="mt-4 text-center lg:hidden">
+              <div className="mt-4 pb-4 text-center lg:hidden">
                 <h3
                   className={`mb-2 text-lg font-bold text-black ${neueHaasDisplay.className}`}
                 >
@@ -336,7 +336,7 @@ const FieldLogPage: React.FC = () => {
             </div>
 
             {/* Bottom Thumbnail Grid */}
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-3 gap-1 sm:grid-cols-6 sm:gap-4">
               {thumbnailImages.map((image, index) => (
                 <button
                   key={index}
