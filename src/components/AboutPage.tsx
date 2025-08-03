@@ -211,7 +211,7 @@ const AboutPage: React.FC = () => {
               </div>
 
               {/* Image */}
-              <div className="relative aspect-[4/5] border-2 border-black">
+              <div className="relative aspect-[4/5] w-48 border-2 border-black md:w-full">
                 <Image
                   src={currentSlide.image}
                   alt={currentSlide.title}
@@ -229,7 +229,7 @@ const AboutPage: React.FC = () => {
             </div>
 
             {/* Right Column - Text (4/5 width on desktop) */}
-            <div className="space-y-6 pl-12 text-black md:col-span-6">
+            <div className="space-y-6 pl-0 text-black sm:pl-12 md:col-span-6">
               {/* Yellow Color Bar */}
               <div className="h-3 w-20 rounded border border-black bg-[#FFF8BA]"></div>
 
@@ -242,9 +242,341 @@ const AboutPage: React.FC = () => {
               <div
                 className={`text-md leading-relaxed ${halTimezone.className}`}
               >
-                <pre className="font-[inherit] whitespace-pre-wrap">
-                  {currentSlide.text}
-                </pre>
+                {currentSlide.id === 1 ? (
+                  // Special freeform poem layout for DEAR [READER]
+                  <div className="space-y-2 md:space-y-4">
+                    {/* Line 1 - minimal indent */}
+                    <div className="ml-0 text-left text-[12px] md:ml-0 md:text-base">
+                      We are students—
+                    </div>
+
+                    {/* Line 2 - slight indent */}
+                    <div className="ml-4 text-left text-[12px] md:ml-6 md:text-base">
+                      building, creating, and shaping amid uncertainty.
+                    </div>
+
+                    {/* Line 3 - deep indent */}
+                    <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
+                      Not in spite of it, but with it.
+                    </div>
+
+                    {/* Line 4 - deep indent */}
+                    <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
+                      Uncertainty doesn't scare us -
+                    </div>
+
+                    {/* Line 5 - deep indent */}
+                    <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
+                      It keeps us curious, present, and paying attention.
+                    </div>
+
+                    {/* Spacing */}
+                    <div className="h-4"></div>
+
+                    {/* Line 6 - center-ish */}
+                    <div className="ml-8 text-left text-[12px] md:ml-28 md:text-base">
+                      Imagine this:
+                    </div>
+
+                    {/* Line 7 - center-ish */}
+                    <div className="ml-8 text-left text-[12px] md:ml-28 md:text-base">
+                      There's a thunderstorm- lightning cracking
+                    </div>
+
+                    {/* Line 8 - center-ish */}
+                    <div className="ml-8 text-left text-[12px] md:ml-28 md:text-base">
+                      And you—you're in a room, watching the storm
+                    </div>
+
+                    {/* Line 9 - minimal indent */}
+                    <div className="ml-3 text-left text-[12px] md:ml-8 md:text-base">
+                      And that's the difference.
+                    </div>
+
+                    {/* Line 10 - deep indent */}
+                    <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
+                      Lightning doesn't strike those who sit still.
+                    </div>
+
+                    {/* Line 11 - deep indent */}
+                    <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
+                      It finds the ones in motion—
+                    </div>
+
+                    {/* Line 12 - moderate indent */}
+                    <div className="ml-8 text-left text-[12px] md:ml-24 md:text-base">
+                      who observe, who listen,
+                    </div>
+
+                    {/* Line 13 - slight indent */}
+                    <div className="ml-6 text-left text-[12px] md:ml-16 md:text-base">
+                      who move toward mystery.
+                    </div>
+
+                    {/* Spacing */}
+                    <div className="h-4"></div>
+
+                    {/* Line 14 - slight indent */}
+                    <div className="ml-2 text-left text-[12px] md:ml-6 md:text-base">
+                      Our work is guided by that same motion.
+                    </div>
+
+                    {/* Line 15 - slight indent */}
+                    <div className="ml-2 text-left text-[12px] md:ml-6 md:text-base">
+                      We chase ideas.
+                    </div>
+
+                    {/* Line 16 - moderate indent */}
+                    <div className="ml-10 text-left text-[12px] md:ml-24 md:text-base">
+                      We embrace the what-ifs,
+                    </div>
+
+                    {/* Line 17 - deep indent */}
+                    <div className="ml-16 text-left text-[12px] md:ml-36 md:text-base">
+                      We honor instinct.
+                    </div>
+
+                    {/* Spacing */}
+                    <div className="h-4"></div>
+
+                    {/* Line 18 - moderate indent */}
+                    <div className="ml-8 text-left text-[12px] md:ml-20 md:text-base">
+                      We do our fieldwork —
+                    </div>
+
+                    {/* Line 19 - moderate indent */}
+                    <div className="ml-8 text-left text-[12px] md:ml-20 md:text-base">
+                      observing, archiving, logging in
+                    </div>
+
+                    {/* Line 20 - moderate indent */}
+                    <div className="ml-8 text-left text-[12px] md:ml-20 md:text-base">
+                      all the information around us.
+                    </div>
+
+                    {/* Spacing */}
+                    <div className="h-6"></div>
+
+                    {/* Final line - centered emphasis */}
+                    <div className="ml-12 text-left text-[12px] font-medium md:ml-32 md:text-base">
+                      Welcome to Field Log
+                    </div>
+                  </div>
+                ) : currentSlide.id === 2 ? (
+                  // Special layout for WHAT TO EXPECT with bold headers
+                  <div className="space-y-4">
+                    <p className="mb-6 text-[12px] md:text-base">
+                      (What to expect an artisan from Field-Log Book)
+                    </p>
+
+                    <p className="mb-6 text-[12px] md:text-base">
+                      This book connects you with artisans so you can bring your
+                      vision to life. Here's what to expect - and what's
+                      expected of you - if you want to collaborate with an
+                      artisan:
+                    </p>
+
+                    <div className="space-y-6">
+                      {/* Section 1 */}
+                      <div>
+                        <h3 className="mb-2 text-[12px] font-semibold md:text-base">
+                          i. RESPECT + COMMUNICATION
+                        </h3>
+                        <p className="text-[12px] md:text-base">
+                          Start with respect. Understand the artisan's craft,
+                          materials, and design process. Communicate clearly and
+                          set expectations. Many artisans primarily speak
+                          Spanish - be ready to use Spanish or a translator.
+                        </p>
+                      </div>
+
+                      {/* Section 2 */}
+                      <div>
+                        <h3 className="mb-2 text-[12px] font-bold md:text-base">
+                          ii. SMALL BATCHES + TIMELINES
+                        </h3>
+                        <p className="text-[12px] md:text-base">
+                          Most artisans work in small batches - under 100 units
+                          - to ensure quality. If you need higher volumes,
+                          discuss it early. Handcrafted work takes time, and
+                          timelines can shift. Stay flexible.
+                        </p>
+                      </div>
+
+                      {/* Section 3 */}
+                      <div>
+                        <h3 className="mb-2 text-[12px] font-bold md:text-base">
+                          iii. SUPPORT
+                        </h3>
+                        <p className="text-[12px] md:text-base">
+                          We are a studio dedicated to amplifying artisans'
+                          stories - bringing their culture to life through
+                          brand, design, and communication. Field Log is here to
+                          guide you. Reach out anytime.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : currentSlide.id === 3 ? (
+                  // Special layout for MANIFESTO with numbers on left
+                  <div className="space-y-4">
+                    <p className="mb-6 text-left text-[12px] md:text-base">
+                      (How to connect with an artisan from Field-Log Book)
+                    </p>
+
+                    <div className="space-y-3">
+                      {/* Each manifesto item */}
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          i.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          If you're here for craft,
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          ii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          start with respect.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          iii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          If you're here for speed,
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          iv.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          you're in the wrong book.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          v.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          If you want to connect with an artisan -
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          vi.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          and need help, contact us for an introduction.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          vii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          Come with curiosity.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          viii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          Come with care.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          ix.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          Come with patience.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          x.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          Each taller, is not just a place of production.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          xi.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          Each taller, is a world.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          xii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          a culture.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          xiii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          a community.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          xiv.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          We are observers, learning from the field.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          xv.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          We are listeners.
+                        </span>
+                      </div>
+
+                      <div className="flex flex-row items-start gap-2 md:gap-4">
+                        <span className="w-6 flex-shrink-0 text-right text-[12px] md:w-8 md:text-sm">
+                          xvii.
+                        </span>
+                        <span className="flex-1 text-left text-[12px] md:text-base">
+                          We are Field-Log.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  // Default layout for other slides
+                  <pre className="font-[inherit] whitespace-pre-wrap">
+                    {currentSlide.text}
+                  </pre>
+                )}
               </div>
             </div>
           </div>

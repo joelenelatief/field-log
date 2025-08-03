@@ -4,6 +4,7 @@ import React from 'react';
 import Header from './Header';
 import AboutSection from './AboutSection';
 import { usePathname } from 'next/navigation';
+import { neueHaasDisplay } from '@/lib/fonts';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -37,12 +38,19 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
             <div className="block border-t border-gray-300 bg-[#F6F7EF] p-8 lg:hidden">
               <AboutSection />
 
-              {/* Footer for Mobile */}
+              {/* Footer for Mobile - positioned at bottom of AboutSection */}
               <div className="mt-8 border-t border-gray-300 pt-8">
                 <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>FIELD LOG LLC</span>
-                  <span>ESTABLISHED c. 2025.</span>
-                  <a href="#" className="underline">
+                  <span className={neueHaasDisplay.className}>
+                    FIELD LOG LLC
+                  </span>
+                  <span className={neueHaasDisplay.className}>
+                    ESTABLISHED c. 2025
+                  </span>
+                  <a
+                    href="https://instagram.com/fieldlog"
+                    className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
+                  >
                     INSTAGRAM
                   </a>
                 </div>
