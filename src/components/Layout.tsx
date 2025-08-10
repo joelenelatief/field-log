@@ -16,13 +16,19 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
   const isShopOrAbout =
     pathname.startsWith('/shop') || pathname.startsWith('/about');
 
+  const isShopPage = pathname.startsWith('/shop');
+
   return (
     <div className="min-h-screen bg-[#F6F7EF]">
-      <Header />
-      <div className="flex">
-        {/* Left Sidebar - Hidden on mobile for shop, about, and home pages */}
+      {/* Fixed Header */}
+      <div className="fixed top-0 right-0 left-0 z-50 bg-[#F6F7EF]">
+        <Header />
+      </div>
+
+      <div className="flex pt-[80px]">
+        {/* Fixed Left Sidebar - Hidden on mobile for shop, about, and home pages */}
         <div
-          className={`block w-80 overflow-y-auto border-r border-black bg-[#F6F7EF] p-8 ${
+          className={`fixed top-[60px] bottom-0 left-0 w-80 overflow-y-auto border-r border-black bg-[#F6F7EF] p-8 ${
             isShopOrAbout || isHomePage ? 'max-lg:hidden' : ''
           }`}
         >
@@ -30,31 +36,15 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         {/* Main Content Area */}
-        <main className="flex-1 bg-[#F6F7EF]">
+        <main
+          className={`flex-1 bg-[#F6F7EF] ${isShopOrAbout || isHomePage ? 'lg:ml-80' : ''}`}
+        >
           {children}
 
           {/* About Section at Bottom for Home Page on Mobile */}
           {isHomePage && (
-            <div className="block border-t border-gray-300 bg-[#F6F7EF] p-8 lg:hidden">
-              <AboutSection />
-
-              {/* Footer for Mobile - positioned at bottom of AboutSection */}
-              <div className="mt-8 border-t border-gray-300 pt-8">
-                <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span className={neueHaasDisplay.className}>
-                    FIELD LOG LLC
-                  </span>
-                  <span className={neueHaasDisplay.className}>
-                    ESTABLISHED c. 2025
-                  </span>
-                  <a
-                    href="https://instagram.com/fieldlog"
-                    className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
-                  >
-                    INSTAGRAM
-                  </a>
-                </div>
-              </div>
+            <div className="border-t border-gray-300 bg-[#F6F7EF] sm:p-8 lg:hidden">
+              <AboutSection showFooter={true} />
             </div>
           )}
         </main>

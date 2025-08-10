@@ -1,175 +1,387 @@
 'use client';
 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { CustomCursor } from './CustomCursor';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Sample product data (placeholder)
-const PRODUCTS = [
+// Shop products data
+const SHOP_PRODUCTS = [
   {
     id: 1,
-    name: 'Field Log Book',
-    price: '$65.00 USD',
-    caption: 'Free shipping on pre-orders',
-    image:
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F14e4de3fb3de41cb9b63aafffa2d269a',
-    description:
-      'Limited edition hardcover book featuring artisan stories and photography. Each book is hand-bound with premium materials and includes exclusive content not available in the digital edition.',
-    status: 'Pre-order',
+    name: 'DARKSLIDE BELT',
+    subtitle: 'Burgundy',
+    price: '$198 USD',
+    image: '/images/belt1.jpg', // Using one of the field log images for the belt
+    description: 'Handcrafted leather belt with traditional artisan techniques',
   },
   {
     id: 2,
-    name: 'Alpaca Throw Blanket',
-    price: '$120.00 USD',
-    caption: 'Limited availability',
-    image:
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2Ff84931ffaac0432ead4cfac7a5301080',
-    description:
-      'Handwoven alpaca wool throw blanket from Peruvian highlands. Each blanket is crafted by skilled artisans using traditional techniques passed down through generations.',
-    status: 'Coming Soon',
-  },
-  {
-    id: 3,
-    name: 'Leather Journal Cover',
-    price: '$85.00 USD',
-    caption: 'Artisan crafted',
-    image:
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F76aa161b23fc4d92ab515a1736010543',
-    description:
-      'Hand-stitched leather journal cover with traditional patterns. Made from sustainably sourced leather and embossed with designs inspired by indigenous Colombian art.',
-    status: 'Coming Soon',
-  },
-  {
-    id: 4,
-    name: 'Woven Wall Hanging',
-    price: '$150.00 USD',
-    caption: 'Each piece unique',
-    image:
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F3a186006e712412fa455839f3b84a4c1',
-    description:
-      'Traditional telar-woven wall hanging with natural dyes. Created by master weavers using techniques that have been preserved for centuries.',
-    status: 'Coming Soon',
+    name: 'FIELD LOG BOOK',
+    subtitle: 'Limited Edition',
+    price: '$65 USD',
+    image: '/images/field_log_book.png',
+    description: 'Curated chronicle of Latin American textile artisans',
   },
 ];
 
 const ShopPage: React.FC = () => {
-  // State to track the selected product
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
+  const [activeProductIndex, setActiveProductIndex] = useState(0);
+  const currentProduct = SHOP_PRODUCTS[activeProductIndex];
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const productRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleProductChange = (index: number) => {
+    setActiveProductIndex(index);
+  };
+
+  const scrollToProduct = (index: number) => {
+    const productElement = productRefs.current[index];
+    if (productElement && scrollContainerRef.current) {
+      productElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest',
+      });
+    }
+  };
+
+  const handleNumberClick = (numberIndex: number) => {
+    // Switch to the selected product and scroll to it
+    setActiveProductIndex(numberIndex);
+    scrollToProduct(numberIndex);
+  };
+
+  const scrollToNext = () => {
+    const nextIndex = Math.min(
+      activeProductIndex + 1,
+      SHOP_PRODUCTS.length - 1
+    );
+    if (nextIndex !== activeProductIndex) {
+      setActiveProductIndex(nextIndex);
+      scrollToProduct(nextIndex);
+    }
+  };
+
+  const scrollToPrevious = () => {
+    const prevIndex = Math.max(activeProductIndex - 1, 0);
+    if (prevIndex !== activeProductIndex) {
+      setActiveProductIndex(prevIndex);
+      scrollToProduct(prevIndex);
+    }
+  };
+
+  // Handle scroll-based highlighting with debounce
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      if (!scrollContainerRef.current) return;
+
+      // Clear previous timeout
+      clearTimeout(timeoutId);
+
+      // Debounce the scroll detection
+      timeoutId = setTimeout(() => {
+        const container = scrollContainerRef.current;
+        if (!container) return;
+
+        const containerRect = container.getBoundingClientRect();
+        // Account for fixed header height (80px) when calculating center
+        const headerHeight = 80;
+        const adjustedContainerTop = containerRect.top;
+        const containerCenter = adjustedContainerTop + containerRect.height / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        productRefs.current.forEach((ref, index) => {
+          if (ref) {
+            const rect = ref.getBoundingClientRect();
+            // Account for header height when calculating element center
+            const elementCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(elementCenter - containerCenter);
+
+            // Only consider products that are significantly in view
+            if (distance < closestDistance && distance < 200) {
+              closestDistance = distance;
+              closestIndex = index;
+            }
+          }
+        });
+
+        // Only update if there's a clear winner and it's different
+        if (closestDistance < 200 && closestIndex !== activeProductIndex) {
+          setActiveProductIndex(closestIndex);
+        }
+      }, 100); // 100ms debounce
+    };
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      return () => {
+        container.removeEventListener('scroll', handleScroll);
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [activeProductIndex]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        scrollToNext();
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        scrollToPrevious();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeProductIndex]);
 
   return (
     <>
       <CustomCursor />
-      <div className="cursor-none p-8 text-neutral-700">
-        <div className="container mx-auto px-4">
-          {/* 3-column product display with middle column 1.5x larger */}
-          <div className="mb-12 w-full rounded-sm p-8">
-            <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-7">
-              {/* Left column - Product info (2/7 width) */}
-              <div className="flex flex-col md:col-span-2">
-                <h2
-                  className={`mb-4 text-2xl font-bold ${neueHaasDisplay.className}`}
+      <div className="flex min-h-screen bg-[#F6F7EF]">
+        {/* Main Content Area */}
+        <div className="flex flex-1 flex-col">
+          <div className="flex-1 p-8">
+            {/* 3-Column Layout: Numbers | Image | Product Info */}
+            <div className="mb-4 min-h-[400px] lg:mb-8 lg:min-h-[600px]">
+              {/* Product Info for Mobile - Above Image */}
+              <div className="mb-4 pb-4 text-center lg:hidden">
+                <h3
+                  className={`mb-2 text-lg font-bold text-black ${neueHaasDisplay.className}`}
                 >
-                  {selectedProduct.name}
-                </h2>
+                  {currentProduct.name}
+                </h3>
                 <p
-                  className={`mb-6 text-sm text-neutral-700 ${halTimezone.className} italic`}
+                  className={`text-sm text-gray-600 italic ${halTimezone.className}`}
                 >
-                  {selectedProduct.description}
+                  {currentProduct.subtitle}
                 </p>
-                <div className={`text-sm ${halTimezone.className}`}>
-                  <p className="mb-2">• Handcrafted by artisans</p>
-                  <p className="mb-2">• Limited edition</p>
-                  <p className="mb-2">• Ethically sourced materials</p>
+              </div>
+
+              {/* Mobile Layout */}
+              <div className="flex items-center gap-2 lg:hidden">
+                {/* Left Numbers */}
+                <div className="flex flex-col justify-center space-y-2">
+                  {SHOP_PRODUCTS.slice(0, 1).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleNumberClick(index)}
+                      className={`cursor-none transition-all duration-300 ${
+                        activeProductIndex === index
+                          ? 'text-black'
+                          : 'text-gray-400'
+                      }`}
+                    >
+                      <span
+                        className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                      >
+                        [0{index + 1}]
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Center Image */}
+                <div className="relative flex flex-1 justify-center">
+                  <div className="relative">
+                    <Link
+                      href={`/shop/${currentProduct.id}`}
+                      className="cursor-none"
+                    >
+                      <div className="relative inline-block border-[8px] border-black">
+                        <Image
+                          src={currentProduct.image}
+                          alt={currentProduct.name}
+                          width={800}
+                          height={800}
+                          className="object-cover transition-opacity hover:opacity-90"
+                          priority
+                          style={{ height: '400px', width: 'auto' }}
+                        />
+                      </div>
+                    </Link>
+
+                    {/* Buy Now Button - Mobile (above dots) */}
+                    <div className="flex justify-center py-4">
+                      <a
+                        href={`/shop/${currentProduct.id}`}
+                        className="flex w-full max-w-xs cursor-none items-center justify-between border-2 border-black px-4 py-2 text-black transition-colors hover:bg-black hover:text-white"
+                      >
+                        <span
+                          className={`text-sm font-medium ${neueHaasDisplay.className}`}
+                        >
+                          ADD TO CART
+                        </span>
+                        <span
+                          className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                        >
+                          {currentProduct.price}
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Numbers */}
+                <div className="flex flex-col justify-center space-y-2">
+                  {SHOP_PRODUCTS.slice(1, 2).map((_, index) => (
+                    <button
+                      key={index + 1}
+                      onClick={() => handleNumberClick(index + 1)}
+                      className={`cursor-none transition-all duration-300 ${
+                        activeProductIndex === index + 1
+                          ? 'text-black'
+                          : 'text-gray-400'
+                      }`}
+                    >
+                      <span
+                        className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                      >
+                        [0{index + 2}]
+                      </span>
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Center column - Product image (3/7 width = 1.5x the side columns) */}
-              <div className="flex justify-center md:col-span-3">
-                <div className="aspect-square w-full overflow-hidden border-1 border-black bg-[#EBEDDFE5] p-3">
-                  <Image
-                    src={selectedProduct.image}
-                    alt={selectedProduct.name}
-                    className="h-full w-full object-cover transition-transform hover:scale-105"
-                    width={500}
-                    height={500}
-                  />
+              {/* Desktop Layout - Scrollable Gallery */}
+              <div className="hidden lg:grid lg:h-screen lg:grid-cols-5 lg:gap-2">
+                {/* Column 1: Fixed Numbers Navigation (Left Side) */}
+                <div className="sticky top-0 h-screen lg:col-span-1">
+                  <div className="flex h-full flex-col justify-center space-y-4">
+                    {SHOP_PRODUCTS.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleNumberClick(index)}
+                        className={`cursor-none transition-all duration-300 ${
+                          activeProductIndex === index
+                            ? 'text-black'
+                            : 'text-gray-400'
+                        }`}
+                      >
+                        <span
+                          className={`text-xl font-bold ${neueHaasDisplay.className}`}
+                        >
+                          [0{index + 1}]
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Right column - Price and cart (2/7 width) */}
-              <div className="flex flex-col md:col-span-2">
-                <div className="mb-6">
-                  <span
-                    className={`text-3xl font-semibold ${neueHaasDisplay.className}`}
-                  >
-                    {selectedProduct.price}
-                  </span>
-                  <p
-                    className={`mt-1 text-sm text-neutral-500 ${halTimezone.className} italic`}
-                  >
-                    {selectedProduct.caption}
-                  </p>
-                </div>
-                <button
-                  className={`w-full cursor-pointer rounded-sm border border-black bg-transparent px-4 py-3 text-sm font-bold transition-colors hover:bg-black hover:text-white ${neueHaasDisplay.className}`}
+                {/* Column 2: Scrollable Products Gallery (Center) */}
+                <div
+                  className="scrollbar-hide h-screen overflow-y-auto pb-24 lg:col-span-3"
+                  ref={scrollContainerRef}
+                  style={{
+                    scrollbarWidth: 'none' /* Firefox */,
+                    msOverflowStyle: 'none' /* Internet Explorer 10+ */,
+                  }}
                 >
-                  ORDER NOW
-                </button>
-                <div className="mt-8">
-                  <p className={`text-sm ${halTimezone.className} italic`}>
-                    Shipping worldwide. Expected delivery: Fall 2025.
-                  </p>
+                  <div className="space-y-12 py-8 pb-24">
+                    {SHOP_PRODUCTS.map((product, index) => (
+                      <div
+                        key={product.id}
+                        ref={(el) => {
+                          productRefs.current[index] = el;
+                        }}
+                        className="flex flex-col items-center"
+                      >
+                        <div className="relative inline-block">
+                          <Link
+                            href={`/shop/${product.id}`}
+                            className="cursor-none"
+                          >
+                            <div className="relative inline-block border-[14px] border-black">
+                              <Image
+                                src={product.image}
+                                alt={product.name}
+                                width={1200}
+                                height={1200}
+                                className="object-cover transition-opacity hover:opacity-90"
+                                priority={index === 0}
+                                style={{ height: '700px', width: 'auto' }}
+                              />
+                            </div>
+                          </Link>
+
+                          {/* Buy Now Button */}
+                          <div className="flex justify-center py-4">
+                            <a
+                              href={`/shop/${product.id}`}
+                              className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
+                            >
+                              <span
+                                className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                              >
+                                ADD TO CART
+                              </span>
+                              <span
+                                className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                              >
+                                {product.price}
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Column 3: Product Information (Right Side) */}
+                <div className="sticky top-0 h-screen lg:col-span-1">
+                  <div className="flex h-full flex-col justify-center text-left">
+                    <h3
+                      className={`mb-2 text-xl font-bold text-black ${neueHaasDisplay.className}`}
+                    >
+                      {SHOP_PRODUCTS[activeProductIndex].name}
+                    </h3>
+                    <p
+                      className={`text-md mb-4 text-gray-600 italic ${halTimezone.className}`}
+                    >
+                      {SHOP_PRODUCTS[activeProductIndex].subtitle}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Product selection grid */}
-          <div className="mb-12">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {PRODUCTS.slice(0, 3).map((product) => (
+            {/* Bottom Thumbnail Grid */}
+            <div className="grid grid-cols-2 gap-3 lg:gap-4">
+              {SHOP_PRODUCTS.map((product, index) => (
                 <Link
-                  key={product.id}
+                  key={index}
                   href={`/shop/${product.id}`}
-                  className={`block cursor-pointer overflow-hidden rounded-sm transition-all ${
-                    selectedProduct.id === product.id ? 'ring-1 ring-black' : ''
-                  }`}
-                  onClick={() => setSelectedProduct(product)}
+                  className="relative mx-auto aspect-[3/4] max-w-xs cursor-none overflow-hidden border-2 border-black transition-opacity hover:opacity-80 lg:max-w-sm"
                 >
-                  <div className="bg-white p-3">
-                    <h4
-                      className={`text-sm font-bold ${neueHaasDisplay.className}`}
-                    >
-                      {product.name}
-                    </h4>
-                    <div className="flex flex-col">
-                      <p className="text-sm">{product.price}</p>
-                      <p
-                        className={`text-xs text-neutral-500 ${halTimezone.className} italic`}
-                      >
-                        {product.caption}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="aspect-square overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="h-full w-full object-cover transition-transform hover:scale-105"
-                      width={400}
-                      height={400}
-                    />
-                  </div>
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-102"
+                  />
+                  {/* Active indicator */}
+                  {index === activeProductIndex && (
+                    <div className="absolute inset-0 border-2 border-black"></div>
+                  )}
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Newsletter signup */}
-          <div className="rounded-md bg-neutral-100 p-8 text-center">
+          <div className="rounded-md bg-neutral-100 p-8 text-center text-black">
             <h2
               className={`mb-4 text-2xl font-bold ${neueHaasDisplay.className}`}
             >
@@ -183,7 +395,7 @@ const ShopPage: React.FC = () => {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 rounded-sm border border-neutral-300 px-4 py-2 focus:border-black focus:outline-none"
+                className="flex-1 rounded-sm border border-neutral-300 px-4 py-2 text-black focus:border-black focus:outline-none"
               />
               <button
                 className={`rounded-sm bg-black px-6 py-2 text-sm font-bold text-white transition-opacity hover:opacity-80 ${neueHaasDisplay.className}`}

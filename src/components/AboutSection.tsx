@@ -1,13 +1,31 @@
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 
 interface AboutSectionProps {
   className?: string;
+  showFooter?: boolean;
 }
 
-const AboutSection: React.FC<AboutSectionProps> = ({ className = '' }) => {
+const AboutSection: React.FC<AboutSectionProps> = ({
+  className = '',
+  showFooter = false,
+}) => {
   return (
     <div className={`space-y-8 ${className}`}>
+      {/* Mobile Image - Only visible on mobile */}
+      <div className="mb-6 block lg:hidden">
+        <Image
+          src="/images/field_log_book.png"
+          alt="Field Log Book"
+          width={400}
+          height={300}
+          className="h-auto w-full rounded-sm object-cover"
+          priority
+        />
+      </div>
+
       {/* Company Description */}
       <div>
         <p
@@ -80,12 +98,32 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className = '' }) => {
 
       {/* Buy the Book Section */}
       <div>
-        <h3
-          className={`mb-3 text-sm font-semibold text-black ${neueHaasDisplay.className}`}
-        >
-          BUY THE BOOK
-        </h3>
+        <Link href="/shop/2">
+          <button
+            className={`cursor-none border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-black hover:text-white ${neueHaasDisplay.className}`}
+          >
+            BUY THE BOOK
+          </button>
+        </Link>
       </div>
+
+      {/* Footer - Only shown when showFooter is true */}
+      {showFooter && (
+        <div className="mt-8 border-t border-gray-300 pt-8">
+          <div className="flex flex-col space-y-2 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+            <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
+            <span className={neueHaasDisplay.className}>
+              ESTABLISHED c. 2025
+            </span>
+            <a
+              href="https://instagram.com/fieldlog"
+              className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
+            >
+              INSTAGRAM
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

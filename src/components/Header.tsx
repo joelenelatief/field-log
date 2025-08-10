@@ -111,7 +111,7 @@ const Header: React.FC = () => {
                 href="/"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100 ${
-                  isActive('/') ? 'border-l-2 border-black bg-gray-100' : ''
+                  isActive('/') ? 'border-l-2 border-black underline' : ''
                 }`}
               >
                 HOME
@@ -120,9 +120,7 @@ const Header: React.FC = () => {
                 href="/about"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100 ${
-                  isActive('/about')
-                    ? 'border-l-2 border-black bg-gray-100'
-                    : ''
+                  isActive('/about') ? 'border-l-2 border-black underline' : ''
                 }`}
               >
                 ABOUT US
@@ -131,7 +129,7 @@ const Header: React.FC = () => {
                 href="/shop"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100 ${
-                  isActive('/shop') ? 'border-l-2 border-black bg-gray-100' : ''
+                  isActive('/shop') ? 'border-l-2 border-black underline' : ''
                 }`}
               >
                 SHOP ALL

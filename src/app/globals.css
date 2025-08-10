@@ -83,3 +83,12 @@ body {
     transform: scale(1);
   }
 }
+
+/* Hide scrollbar for webkit browsers */
+.scrollbar-hide {
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

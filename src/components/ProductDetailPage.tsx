@@ -8,19 +8,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-// Sample product data (this would typically come from an API or database)
+// Product data matching the shop page products
 const PRODUCT_DATA = {
   '1': {
     id: '1',
     name: 'DARKSLIDE BELT',
-    subtitle: 'burgundy',
-    price: '$158 USD',
-    images: [
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F14e4de3fb3de41cb9b63aafffa2d269a',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2Ff84931ffaac0432ead4cfac7a5301080',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F76aa161b23fc4d92ab515a1736010543',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F3a186006e712412fa455839f3b84a4c1',
-    ],
+    subtitle: 'Burgundy',
+    price: '$198 USD',
+    images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
     description: `The Darkslide Belt is a refined take on the classic utility belt, featuring intricate hand-stitched details. Crafted from high-quality 100% Argentinian leather, this belt features a dedicated utilitarian pocket and secret snap loops to hold supplies while keeping you chic in any occasion.
 
 Whether you're exploring the far-flung abroad or strolling an location, the Darkslide Belt ensures that your essential tools are always within reach.`,
@@ -31,68 +26,26 @@ Whether you're exploring the far-flung abroad or strolling an location, the Dark
   },
   '2': {
     id: '2',
-    name: 'ALPACA THROW BLANKET',
-    subtitle: 'natural white',
-    price: '$120 USD',
-    images: [
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2Ff84931ffaac0432ead4cfac7a5301080',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F76aa161b23fc4d92ab515a1736010543',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F3a186006e712412fa455839f3b84a4c1',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F14e4de3fb3de41cb9b63aafffa2d269a',
-    ],
-    description: `Handwoven alpaca wool throw blanket from Peruvian highlands. Each blanket is crafted by skilled artisans using traditional techniques passed down through generations.
+    name: 'FIELD LOG BOOK',
+    subtitle: 'Limited Edition',
+    price: '$65 USD',
+    images: ['/images/field_log_book.png'],
+    description: `FIELD LOG is a curated chronicle of Latin American textile artisans—a reimagined directory where craft meets contemporary design. This edition explores eight 'talleres' textile artisan workshops across Perú and Colombia, where tradition is not preserved but evolved—woven, stitched, and sculpted into the present.
 
-The natural fibers provide exceptional warmth and softness, making this the perfect companion for cool evenings.`,
-    designTeam: 'TB LI COI Creative Director: Maria Santos | AOC COI',
-    director: 'Creative Director: Maria Santos | LIMA, PERU',
-    manufacturer: 'Manufactured: Alpaca Heritage Co. | CUSCO, PERU',
-    technicalDesigner: 'Technical Designer: Carlos Mendez | LIMA, PERU',
-  },
-  '3': {
-    id: '3',
-    name: 'LEATHER JOURNAL COVER',
-    subtitle: 'rustic brown',
-    price: '$85 USD',
-    images: [
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F76aa161b23fc4d92ab515a1736010543',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F3a186006e712412fa455839f3b84a4c1',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F14e4de3fb3de41cb9b63aafffa2d269a',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2Ff84931ffaac0432ead4cfac7a5301080',
-    ],
-    description: `Hand-stitched leather journal cover with traditional patterns. Made from sustainably sourced leather and embossed with designs inspired by indigenous Colombian art.
-
-Perfect for documenting your travels and thoughts in style.`,
-    designTeam: 'TB LI COI Creative Director: Ana Rodriguez | AOC COI',
-    director: 'Creative Director: Ana Rodriguez | BOGOTA, COL',
-    manufacturer: 'Manufactured: Leather Craft Studio | BOGOTA, COL',
-    technicalDesigner: 'Technical Designer: Diego Vargas | BOGOTA, COL',
-  },
-  '4': {
-    id: '4',
-    name: 'WOVEN WALL HANGING',
-    subtitle: 'earth tones',
-    price: '$150 USD',
-    images: [
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F3a186006e712412fa455839f3b84a4c1',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F14e4de3fb3de41cb9b63aafffa2d269a',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2Ff84931ffaac0432ead4cfac7a5301080',
-      'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F76aa161b23fc4d92ab515a1736010543',
-    ],
-    description: `Traditional telar-woven wall hanging with natural dyes. Created by master weavers using techniques that have been preserved for centuries.
-
-Each piece tells a story through its intricate patterns and vibrant colors.`,
-    designTeam: 'TB LI COI Creative Director: Luis Morales | AOC COI',
-    director: 'Creative Director: Luis Morales | QUITO, ECU',
-    manufacturer: 'Manufactured: Weaving Collective | OTAVALO, ECU',
-    technicalDesigner: 'Technical Designer: Isabel Torres | QUITO, ECU',
+Annick and Pedro spent a year getting to know and, vetting artisans who work with leather, alpaca, crochet, telar weaving, and more, preserving and pushing the boundaries of their craft. More than places of production, these workshops embody generational skill, cultural resilience, and pure artistry.`,
+    designTeam:
+      'Field Log develop projects that honor culture, history, craft, and heritage through storytelling',
+    director: 'Creative Directors: Annick & Pedro | Field Log',
+    manufacturer: 'Published by Field Log LLC | 2025',
+    technicalDesigner: 'Design & Photography: Field Log Team',
   },
 };
 
 const RELATED_IMAGES = [
-  'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F14e4de3fb3de41cb9b63aafffa2d269a',
-  'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2Ff84931ffaac0432ead4cfac7a5301080',
-  'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F76aa161b23fc4d92ab515a1736010543',
-  'https://cdn.builder.io/api/v1/image/assets%2F0c19ab369c9a4b18b374f980595d690b%2F3a186006e712412fa455839f3b84a4c1',
+  '/images/image1.png',
+  '/images/image2.png',
+  '/images/field_log_book.png',
+  '/images/image8.png',
 ];
 
 interface ProductDetailPageProps {
@@ -378,9 +331,14 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
           {/* Footer */}
           <div className="mt-16 border-t border-gray-300 pt-8">
             <div className="flex items-center justify-between text-xs text-gray-500">
-              <span>FIELD LOG LLC</span>
-              <span>ESTABLISHED 2024</span>
-              <a href="#" className="underline">
+              <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
+              <span className={neueHaasDisplay.className}>
+                ESTABLISHED c. 2025
+              </span>
+              <a
+                href="https://instagram.com/fieldlog"
+                className={`underline transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
+              >
                 INSTAGRAM
               </a>
             </div>
