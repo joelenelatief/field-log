@@ -209,10 +209,10 @@ const ShopPage: React.FC = () => {
                           src={currentProduct.image}
                           alt={currentProduct.name}
                           width={800}
-                          height={800}
+                          height={700}
                           className="object-cover transition-opacity hover:opacity-90"
                           priority
-                          style={{ height: '400px', width: 'auto' }}
+                          style={{ height: '300px', width: 'auto' }}
                         />
                       </div>
                     </Link>
@@ -364,7 +364,7 @@ const ShopPage: React.FC = () => {
             </div>
 
             {/* Bottom Thumbnail Grid */}
-            <div className="grid grid-cols-2 gap-3 lg:gap-4">
+            <div className="grid hidden grid-cols-2 gap-3 sm:block lg:gap-4">
               {SHOP_PRODUCTS.map((product, index) => (
                 <Link
                   key={index}
