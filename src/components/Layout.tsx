@@ -4,7 +4,6 @@ import React from 'react';
 import Header from './Header';
 import AboutSection from './AboutSection';
 import { usePathname } from 'next/navigation';
-import { neueHaasDisplay } from '@/lib/fonts';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,8 +14,6 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
   const isHomePage = pathname === '/';
   const isShopOrAbout =
     pathname.startsWith('/shop') || pathname.startsWith('/about');
-
-  const isShopPage = pathname.startsWith('/shop');
 
   return (
     <div className="min-h-screen bg-[#F6F7EF]">

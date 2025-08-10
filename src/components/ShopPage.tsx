@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { CustomCursor } from './CustomCursor';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 import Image from 'next/image';
@@ -33,11 +33,7 @@ const ShopPage: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const productRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const handleProductChange = (index: number) => {
-    setActiveProductIndex(index);
-  };
-
-  const scrollToProduct = (index: number) => {
+  const scrollToProduct = useCallback((index: number) => {
     const productElement = productRefs.current[index];
     if (productElement && scrollContainerRef.current) {
       productElement.scrollIntoView({
@@ -46,7 +42,7 @@ const ShopPage: React.FC = () => {
         inline: 'nearest',
       });
     }
-  };
+  }, []);
 
   const handleNumberClick = (numberIndex: number) => {
     // Switch to the selected product and scroll to it
@@ -54,7 +50,7 @@ const ShopPage: React.FC = () => {
     scrollToProduct(numberIndex);
   };
 
-  const scrollToNext = () => {
+  const scrollToNext = useCallback(() => {
     const nextIndex = Math.min(
       activeProductIndex + 1,
       SHOP_PRODUCTS.length - 1
@@ -63,34 +59,42 @@ const ShopPage: React.FC = () => {
       setActiveProductIndex(nextIndex);
       scrollToProduct(nextIndex);
     }
-  };
+  }, [activeProductIndex, scrollToProduct]);
 
-  const scrollToPrevious = () => {
+  const scrollToPrevious = useCallback(() => {
     const prevIndex = Math.max(activeProductIndex - 1, 0);
     if (prevIndex !== activeProductIndex) {
       setActiveProductIndex(prevIndex);
       scrollToProduct(prevIndex);
     }
-  };
+  }, [activeProductIndex, scrollToProduct]);
 
-  // Handle scroll-based highlighting with debounce
+  // Handle scroll-based highlighting with optimized performance
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let rafId: number;
+    let lastUpdateTime = 0;
 
     const handleScroll = () => {
       if (!scrollContainerRef.current) return;
 
-      // Clear previous timeout
-      clearTimeout(timeoutId);
+      // Cancel previous animation frame
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
 
-      // Debounce the scroll detection
-      timeoutId = setTimeout(() => {
+      // Use requestAnimationFrame for smooth performance
+      rafId = requestAnimationFrame(() => {
+        const now = performance.now();
+
+        // Throttle to ~60fps but allow immediate updates for better responsiveness
+        if (now - lastUpdateTime < 16) return;
+        lastUpdateTime = now;
+
         const container = scrollContainerRef.current;
         if (!container) return;
 
         const containerRect = container.getBoundingClientRect();
-        // Account for fixed header height (80px) when calculating center
-        const headerHeight = 80;
+        // Account for fixed header height (60px based on user's changes) when calculating center
         const adjustedContainerTop = containerRect.top;
         const containerCenter = adjustedContainerTop + containerRect.height / 2;
 
@@ -104,27 +108,29 @@ const ShopPage: React.FC = () => {
             const elementCenter = rect.top + rect.height / 2;
             const distance = Math.abs(elementCenter - containerCenter);
 
-            // Only consider products that are significantly in view
-            if (distance < closestDistance && distance < 200) {
+            // More responsive threshold for faster updates
+            if (distance < closestDistance && distance < 150) {
               closestDistance = distance;
               closestIndex = index;
             }
           }
         });
 
-        // Only update if there's a clear winner and it's different
-        if (closestDistance < 200 && closestIndex !== activeProductIndex) {
+        // More responsive updates with smaller threshold
+        if (closestDistance < 150 && closestIndex !== activeProductIndex) {
           setActiveProductIndex(closestIndex);
         }
-      }, 100); // 100ms debounce
+      });
     };
 
     const container = scrollContainerRef.current;
     if (container) {
-      container.addEventListener('scroll', handleScroll);
+      container.addEventListener('scroll', handleScroll, { passive: true });
       return () => {
         container.removeEventListener('scroll', handleScroll);
-        clearTimeout(timeoutId);
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
       };
     }
   }, [activeProductIndex]);
@@ -143,7 +149,7 @@ const ShopPage: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeProductIndex]);
+  }, [activeProductIndex, scrollToNext, scrollToPrevious]);
 
   return (
     <>

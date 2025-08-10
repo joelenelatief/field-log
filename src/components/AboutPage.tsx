@@ -262,7 +262,7 @@ const AboutPage: React.FC = () => {
 
                     {/* Line 4 - deep indent */}
                     <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
-                      Uncertainty doesn't scare us -
+                      Uncertainty doesn&apos;t scare us -
                     </div>
 
                     {/* Line 5 - deep indent */}
@@ -280,22 +280,22 @@ const AboutPage: React.FC = () => {
 
                     {/* Line 7 - center-ish */}
                     <div className="ml-8 text-left text-[12px] md:ml-28 md:text-base">
-                      There's a thunderstorm- lightning cracking
+                      There&apos;s a thunderstorm- lightning cracking
                     </div>
 
                     {/* Line 8 - center-ish */}
                     <div className="ml-8 text-left text-[12px] md:ml-28 md:text-base">
-                      And you—you're in a room, watching the storm
+                      And you—you&apos;re in a room, watching the storm
                     </div>
 
                     {/* Line 9 - minimal indent */}
                     <div className="ml-3 text-left text-[12px] md:ml-8 md:text-base">
-                      And that's the difference.
+                      And that&apos;s the difference.
                     </div>
 
                     {/* Line 10 - deep indent */}
                     <div className="ml-12 text-left text-[12px] md:ml-32 md:text-base">
-                      Lightning doesn't strike those who sit still.
+                      Lightning doesn&apos;t strike those who sit still.
                     </div>
 
                     {/* Line 11 - deep indent */}
@@ -371,9 +371,9 @@ const AboutPage: React.FC = () => {
 
                     <p className="mb-6 text-[12px] md:text-base">
                       This book connects you with artisans so you can bring your
-                      vision to life. Here's what to expect - and what's
-                      expected of you - if you want to collaborate with an
-                      artisan:
+                      vision to life. Here&apos;s what to expect - and
+                      what&apos;s expected of you - if you want to collaborate
+                      with an artisan:
                     </p>
 
                     <div className="space-y-6">
@@ -383,10 +383,11 @@ const AboutPage: React.FC = () => {
                           i. RESPECT + COMMUNICATION
                         </h3>
                         <p className="text-[12px] md:text-base">
-                          Start with respect. Understand the artisan's craft,
-                          materials, and design process. Communicate clearly and
-                          set expectations. Many artisans primarily speak
-                          Spanish - be ready to use Spanish or a translator.
+                          Start with respect. Understand the artisan&apos;s
+                          craft, materials, and design process. Communicate
+                          clearly and set expectations. Many artisans primarily
+                          speak Spanish - be ready to use Spanish or a
+                          translator.
                         </p>
                       </div>
 
@@ -409,7 +410,7 @@ const AboutPage: React.FC = () => {
                           iii. SUPPORT
                         </h3>
                         <p className="text-[12px] md:text-base">
-                          We are a studio dedicated to amplifying artisans'
+                          We are a studio dedicated to amplifying artisans&apos;
                           stories - bringing their culture to life through
                           brand, design, and communication. Field Log is here to
                           guide you. Reach out anytime.
@@ -431,7 +432,7 @@ const AboutPage: React.FC = () => {
                           i.
                         </span>
                         <span className="flex-1 text-left text-[12px] md:text-base">
-                          If you're here for craft,
+                          If you&apos;re here for craft,
                         </span>
                       </div>
 
@@ -449,7 +450,7 @@ const AboutPage: React.FC = () => {
                           iii.
                         </span>
                         <span className="flex-1 text-left text-[12px] md:text-base">
-                          If you're here for speed,
+                          If you&apos;re here for speed,
                         </span>
                       </div>
 
@@ -458,7 +459,7 @@ const AboutPage: React.FC = () => {
                           iv.
                         </span>
                         <span className="flex-1 text-left text-[12px] md:text-base">
-                          you're in the wrong book.
+                          you&apos;re in the wrong book.
                         </span>
                       </div>
 
