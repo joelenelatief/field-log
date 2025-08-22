@@ -22,7 +22,7 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
         <Header />
       </div>
 
-      <div className="flex pt-[80px]">
+      <div className="flex pt-[60px]">
         {/* Fixed Left Sidebar - Hidden on mobile for shop, about, and home pages */}
         <div
           className={`fixed top-[60px] bottom-0 left-0 w-80 overflow-y-auto border-r border-black bg-[#F6F7EF] p-8 ${
