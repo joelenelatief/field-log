@@ -185,7 +185,7 @@ const AboutPage: React.FC = () => {
                       : `text-gray-600 hover:scale-103 hover:bg-white/80 hover:shadow-sm text-normal${neueHaasDisplay.className} uppercase`
                   } bold`}
                   style={{
-                    width: '200px',
+                    width: '160px',
                     height: '24px',
                     borderWidth: '1px',
                     borderStyle: 'solid',
@@ -213,11 +213,11 @@ const AboutPage: React.FC = () => {
                   {/* Text - only visible when active */}
                   <span className={`relative z-10 block`}>
                     <span
-                      className={`text-sm lowercase ${halTimezone.className} mr-2`}
+                      className={`text-xs lowercase ${halTimezone.className} mr-2`}
                     >
                       {tab.numerical}
                     </span>
-                    <span className={`relative text-sm`}>
+                    <span className={`relative text-xs`}>
                       {tab.label}
                       {/* Wavy underline for selected tab */}
                       {activeSlideIndex === tab.id && (
