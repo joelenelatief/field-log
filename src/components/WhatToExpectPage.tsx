@@ -81,7 +81,7 @@ const WhatToExpectPage: React.FC<WhatToExpectPageProps> = ({
 
         {/* Title */}
         <h1 className={`text-xl font-bold ${neueHaasDisplay.className}`}>
-          "ERS"
+          &ldquo;ERS&rdquo;
         </h1>
 
         {/* Definition Style Content */}

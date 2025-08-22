@@ -59,17 +59,7 @@ const AboutPage: React.FC = () => {
     setActiveSlideIndex(index);
   };
 
-  const goToPrevious = () => {
-    setActiveSlideIndex((prev) =>
-      prev === 0 ? magazineSpreads.length - 1 : prev - 1
-    );
-  };
-
-  const goToNext = () => {
-    setActiveSlideIndex((prev) =>
-      prev === magazineSpreads.length - 1 ? 0 : prev + 1
-    );
-  };
+  // Navigation functions removed as they're no longer needed with tab interface
 
   const renderCurrentPage = () => {
     switch (currentSlide.id) {
