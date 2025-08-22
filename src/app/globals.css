@@ -92,3 +92,16 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Wavy underline animation */
+.wavy-underline {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawWavyLine 0.8s ease-out forwards;
+}
+
+@keyframes drawWavyLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

@@ -219,7 +219,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 href="https://shopify.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-md border border-black p-4 text-black transition-colors hover:bg-black hover:text-white"
+                className="flex items-center justify-between rounded-md border border-black bg-black p-4 text-white transition-colors hover:bg-white hover:text-black"
               >
                 <span
                   className={`text-sm font-medium ${neueHaasDisplay.className}`}
