@@ -137,14 +137,14 @@ const AboutPage: React.FC = () => {
           <div className="fixed top-1/2 right-0 z-50 -translate-y-1/2">
             <div className="flex flex-col items-end space-y-1">
               {[
-                { id: 0, label: 'DEAR [READER]', bgColor: '#B55F92' },
-                { id: 1, label: 'DEFINITIONS', bgColor: '#FFF8BA' },
+                { id: 0, label: 'DEAR [READER]', bgColor: '#D6D7CE' },
+                { id: 1, label: 'DEFINITIONS', bgColor: '#D6D7CE' },
                 { id: 2, label: 'MANIFESTO', bgColor: '#D6D7CE' },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => handleSlideChange(tab.id)}
-                  className={`group relative flex cursor-none items-center rounded-l-lg border border-r-0 border-black px-4 py-6 text-sm font-bold transition-all ${
+                  className={`group relative flex cursor-none items-center rounded-l-lg border-2 border-r-0 border-[#92938D] px-4 py-6 text-sm font-bold transition-all ${
                     activeSlideIndex === tab.id
                       ? 'text-black shadow-md'
                       : 'text-gray-500 hover:bg-white/80'
@@ -153,19 +153,22 @@ const AboutPage: React.FC = () => {
                     backgroundColor:
                       activeSlideIndex === tab.id
                         ? tab.bgColor
-                        : 'rgba(255, 255, 255, 0.6)',
+                        : 'rgba(255, 255, 255, 0.3)',
                     width: activeSlideIndex === tab.id ? 'auto' : '48px',
                     textAlign: activeSlideIndex === tab.id ? 'left' : 'right',
                     height: '24px',
                   }}
                 >
-                  {/* Dot indicator when active */}
-                  {activeSlideIndex === tab.id && (
-                    <div
-                      className="absolute top-1/2 left-3 h-2 w-2 -translate-y-1/2 rounded-full border border-gray-600"
-                      style={{ backgroundColor: tab.bgColor }}
-                    ></div>
-                  )}
+                  {/* Dot indicator - always visible */}
+                  <div
+                    className="absolute top-1/2 left-3 h-2 w-2 -translate-y-1/2 rounded-full border border-gray-600"
+                    style={{
+                      backgroundColor:
+                        activeSlideIndex === tab.id ? 'none' : tab.bgColor,
+                    }}
+                  ></div>
+
+                  {/* Text - only visible when active */}
                   {activeSlideIndex === tab.id && (
                     <span
                       className={`relative z-10 block ${activeSlideIndex === tab.id ? 'ml-4' : ''}`}
