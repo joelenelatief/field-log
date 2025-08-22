@@ -10,14 +10,14 @@ import { gsap } from 'gsap';
 const fieldLogSpreads = [
   {
     id: 1,
-    image: '/images/image1.png',
+    image: '/images/image3.png',
     location: 'CARHUAZ, PERÚ',
     coordinates: { lat: '9.2817° S', lng: '77.6450° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
   },
   {
     id: 2,
-    image: '/images/image2.png',
+    image: '/images/about/polaroid.png',
     location: 'HUARAZ, PERÚ',
     coordinates: { lat: '9.5295° S', lng: '77.5292° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
@@ -38,14 +38,14 @@ const fieldLogSpreads = [
   },
   {
     id: 5,
-    image: '/images/image5.png',
+    image: '/images/image7.png',
     location: 'CHOCLOCO, PERÚ',
     coordinates: { lat: '13.1603° S', lng: '75.0721° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
   },
   {
     id: 6,
-    image: '/images/image6.png',
+    image: '/images/image8.png',
     location: 'LIMA, PERÚ',
     coordinates: { lat: '12.1849° S', lng: '77.0075° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
@@ -54,12 +54,12 @@ const fieldLogSpreads = [
 
 // Bottom thumbnail images
 const thumbnailImages = [
-  '/images/image1.png',
-  '/images/image2.png',
+  '/images/image3.png',
+  '/images/about/polaroid.png',
   '/images/image3.png',
   '/images/image4.png',
-  '/images/image5.png',
-  '/images/image6.png',
+  '/images/image7.png',
+  '/images/image8.png',
 ];
 
 const FieldLogPage: React.FC = () => {
