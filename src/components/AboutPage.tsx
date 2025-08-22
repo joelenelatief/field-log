@@ -28,7 +28,7 @@ const magazineSpreads = [
   },
   {
     id: 3,
-    sidebarImage: '/images/about/polaroid.png',
+    sidebarImage: '/images/rocks.jpg',
     slideshowImage: '/images/about/blur.png',
     title: 'MANIFESTO',
     attribution: 'GUATEMALA CITY - 2024',
@@ -251,7 +251,7 @@ const AboutPage: React.FC = () => {
                             </filter>
                           </defs>
                           <path
-                            d="M0,4 Q6,1.5 12,4 Q18,6.5 24,4 Q30,2 36,4 Q42,5.5 48,4 Q54,2.5 60,4 Q66,6 72,4 Q78,1.5 84,4 Q90,5.5 96,4 Q100,3.5 100,4"
+                            d="M0,4 Q10,3.5 20,4 Q30,4.5 40,4 Q50,3.8 60,4 Q70,4.2 80,4 Q90,3.9 100,4"
                             stroke="currentColor"
                             strokeWidth="0.8"
                             fill="none"
