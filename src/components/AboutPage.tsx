@@ -93,7 +93,7 @@ const AboutPage: React.FC = () => {
     <>
       <CustomCursor />
       <div ref={containerRef} className="min-h-screen bg-[#F6F7EF]">
-        <div className="mx-auto max-w-6xl px-8 py-8">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-8">
           {/* Header Section */}
           <div className="mb-16 text-center">
             {/* Main Title */}
