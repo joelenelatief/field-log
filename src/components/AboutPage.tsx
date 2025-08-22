@@ -123,7 +123,7 @@ const AboutPage: React.FC = () => {
                   alt="Header image"
                   width={200}
                   height={200}
-                  className="object-cover"
+                  className="h-full w-full object-cover"
                   style={{ height: '600px', width: 'auto' }}
                 />
               </div>
@@ -134,7 +134,7 @@ const AboutPage: React.FC = () => {
           {renderCurrentPage()}
 
           {/* Side Tab Menu */}
-          <div className="fixed top-1/4 right-0 z-50 -translate-y-1/2 sm:top-1/2">
+          <div className="fixed top-1/3 right-0 z-50 -translate-y-1/2 sm:top-1/2">
             <div className="flex flex-col items-end space-y-1">
               {[
                 { id: 0, label: 'i. dear reader,', bgColor: '#D6D7CE' },
@@ -144,9 +144,9 @@ const AboutPage: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => handleSlideChange(tab.id)}
-                  className={`group relative flex cursor-none items-center rounded-l-lg border-2 border-r-0 border-[#92938D] px-4 py-6 text-sm font-bold transition-all ${
+                  className={`group relative flex cursor-none items-center rounded-l-lg border-2 border-r-0 border-[#92938D] px-4 py-6 text-sm font-bold shadow-md transition-all ${
                     activeSlideIndex === tab.id
-                      ? 'text-black italic underline shadow-md'
+                      ? 'text-black italic underline'
                       : 'text-gray-500 hover:scale-105 hover:bg-white/80 hover:shadow-sm'
                   } ${halTimezone.className} bold`}
                   style={{
