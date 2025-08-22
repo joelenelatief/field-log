@@ -124,7 +124,7 @@ const AboutPage: React.FC = () => {
                   width={200}
                   height={200}
                   className="object-cover"
-                  style={{ height: '400px', width: 'auto' }}
+                  style={{ height: '600px', width: 'auto' }}
                 />
               </div>
             </div>
@@ -134,48 +134,32 @@ const AboutPage: React.FC = () => {
           {renderCurrentPage()}
 
           {/* Side Tab Menu */}
-          <div className="fixed top-1/2 right-0 z-50 -translate-y-1/2">
+          <div className="fixed top-1/4 right-0 z-50 -translate-y-1/2 sm:top-1/2">
             <div className="flex flex-col items-end space-y-1">
               {[
-                { id: 0, label: 'DEAR [READER]', bgColor: '#D6D7CE' },
-                { id: 1, label: 'DEFINITIONS', bgColor: '#D6D7CE' },
-                { id: 2, label: 'MANIFESTO', bgColor: '#D6D7CE' },
+                { id: 0, label: 'i. dear reader,', bgColor: '#D6D7CE' },
+                { id: 1, label: 'ii. what to expect', bgColor: '#D6D7CE' },
+                { id: 2, label: 'iii. manifesto', bgColor: '#D6D7CE' },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => handleSlideChange(tab.id)}
                   className={`group relative flex cursor-none items-center rounded-l-lg border-2 border-r-0 border-[#92938D] px-4 py-6 text-sm font-bold transition-all ${
                     activeSlideIndex === tab.id
-                      ? 'text-black shadow-md'
-                      : 'text-gray-500 hover:bg-white/80'
-                  } ${neueHaasDisplay.className}`}
+                      ? 'text-black italic underline shadow-md'
+                      : 'text-gray-500 hover:scale-105 hover:bg-white/80 hover:shadow-sm'
+                  } ${halTimezone.className} bold`}
                   style={{
                     backgroundColor:
                       activeSlideIndex === tab.id
                         ? tab.bgColor
-                        : 'rgba(255, 255, 255, 0.3)',
-                    width: activeSlideIndex === tab.id ? 'auto' : '48px',
-                    textAlign: activeSlideIndex === tab.id ? 'left' : 'right',
+                        : 'rgba(255, 255, 255, 0.7)',
+                    width: '150px',
                     height: '24px',
                   }}
                 >
-                  {/* Dot indicator - always visible */}
-                  <div
-                    className="absolute top-1/2 left-3 h-2 w-2 -translate-y-1/2 rounded-full border border-gray-600"
-                    style={{
-                      backgroundColor:
-                        activeSlideIndex === tab.id ? 'none' : tab.bgColor,
-                    }}
-                  ></div>
-
                   {/* Text - only visible when active */}
-                  {activeSlideIndex === tab.id && (
-                    <span
-                      className={`relative z-10 block ${activeSlideIndex === tab.id ? 'ml-4' : ''}`}
-                    >
-                      {tab.label}
-                    </span>
-                  )}
+                  <span className={`block} relative z-10`}>{tab.label}</span>
                 </button>
               ))}
             </div>
