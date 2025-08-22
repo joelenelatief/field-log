@@ -11,25 +11,25 @@ import Link from 'next/link';
 const SHOP_PRODUCTS = [
   {
     id: 1,
-    name: 'DARKSLIDE BELT',
-    subtitle: 'Burgundy',
-    price: '$198 USD',
-    image: '/images/belt1.jpg', // Using one of the field log images for the belt
-    description: 'Handcrafted leather belt with traditional artisan techniques',
-  },
-  {
-    id: 2,
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
     image: '/images/field_log_book.png',
     description: 'Curated chronicle of Latin American textile artisans',
   },
+  {
+    id: 2,
+    name: 'DARKSLIDE BELT',
+    subtitle: 'Burgundy',
+    price: '$198 USD',
+    image: '/images/belt1.jpg', // Using one of the field log images for the belt
+    description: 'Handcrafted leather belt with traditional artisan techniques',
+  },
 ];
 
 const ShopPage: React.FC = () => {
   const [activeProductIndex, setActiveProductIndex] = useState(0);
-  const currentProduct = SHOP_PRODUCTS[activeProductIndex];
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const productRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -161,7 +161,7 @@ const ShopPage: React.FC = () => {
             {/* 3-Column Layout: Numbers | Image | Product Info */}
             <div className="mb-4 min-h-[400px] lg:mb-8 lg:min-h-[600px]">
               {/* Product Info for Mobile - Above Image */}
-              <div className="mb-4 pb-4 text-center lg:hidden">
+              {/* <div className="mb-4 pb-4 text-center lg:hidden">
                 <h3
                   className={`mb-2 text-lg font-bold text-black ${neueHaasDisplay.className}`}
                 >
@@ -172,92 +172,66 @@ const ShopPage: React.FC = () => {
                 >
                   {currentProduct.subtitle}
                 </p>
-              </div>
+              </div> */}
 
-              {/* Mobile Layout */}
-              <div className="flex items-center gap-2 lg:hidden">
-                {/* Left Numbers */}
-                <div className="flex flex-col justify-center space-y-2">
-                  {SHOP_PRODUCTS.slice(0, 1).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleNumberClick(index)}
-                      className={`cursor-none transition-all duration-300 ${
-                        activeProductIndex === index
-                          ? 'text-black'
-                          : 'text-gray-400'
-                      }`}
-                    >
-                      <span
-                        className={`text-sm font-bold ${neueHaasDisplay.className}`}
+              {/* Mobile Layout - Stacked Products */}
+              <div className="space-y-24 lg:hidden">
+                {SHOP_PRODUCTS.map((product, index) => (
+                  <div key={product.id} className="flex flex-col items-center">
+                    {/* Product Info */}
+                    <div className="mb-4 text-center">
+                      <h3
+                        className={`mb-2 text-lg font-bold text-black ${neueHaasDisplay.className}`}
                       >
-                        [0{index + 1}]
-                      </span>
-                    </button>
-                  ))}
-                </div>
+                        {product.name}
+                      </h3>
+                      <p
+                        className={`text-sm text-gray-600 italic ${halTimezone.className}`}
+                      >
+                        {product.subtitle}
+                      </p>
+                    </div>
 
-                {/* Center Image */}
-                <div className="relative flex flex-1 justify-center">
-                  <div className="relative">
-                    <Link
-                      href={`/shop/${currentProduct.id}`}
-                      className="cursor-none"
-                    >
-                      <div className="relative inline-block border-[8px] border-black">
-                        <Image
-                          src={currentProduct.image}
-                          alt={currentProduct.name}
-                          width={800}
-                          height={700}
-                          className="object-cover transition-opacity hover:opacity-90"
-                          priority
-                          style={{ height: '300px', width: 'auto' }}
-                        />
-                      </div>
-                    </Link>
+                    {/* Product Image */}
+                    <div className="relative mb-6">
+                      <Link
+                        href={`/shop/${product.id}`}
+                        className="cursor-none"
+                      >
+                        <div className="relative inline-block border-[8px] border-black">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            width={800}
+                            height={700}
+                            className="object-cover transition-opacity hover:opacity-90"
+                            priority={index === 0}
+                            style={{ height: '400px', width: 'auto' }}
+                          />
+                        </div>
+                      </Link>
+                    </div>
 
-                    {/* Buy Now Button - Mobile (above dots) */}
-                    <div className="flex justify-center py-4">
+                    {/* Add to Cart Button */}
+                    <div className="w-full max-w-sm">
                       <a
-                        href={`/shop/${currentProduct.id}`}
-                        className="flex w-full max-w-xs cursor-none items-center justify-between border-2 border-black px-4 py-2 text-black transition-colors hover:bg-black hover:text-white"
+                        href={`/shop/${product.id}`}
+                        className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-4 text-black transition-colors hover:bg-black hover:text-white"
                       >
                         <span
-                          className={`text-sm font-medium ${neueHaasDisplay.className}`}
+                          className={`text-base font-bold ${neueHaasDisplay.className}`}
                         >
-                          ADD TO CART
+                          BUY NOW
                         </span>
                         <span
-                          className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                          className={`text-base font-bold ${neueHaasDisplay.className}`}
                         >
-                          {currentProduct.price}
+                          {product.price}
                         </span>
                       </a>
                     </div>
                   </div>
-                </div>
-
-                {/* Right Numbers */}
-                <div className="flex flex-col justify-center space-y-2">
-                  {SHOP_PRODUCTS.slice(1, 2).map((_, index) => (
-                    <button
-                      key={index + 1}
-                      onClick={() => handleNumberClick(index + 1)}
-                      className={`cursor-none transition-all duration-300 ${
-                        activeProductIndex === index + 1
-                          ? 'text-black'
-                          : 'text-gray-400'
-                      }`}
-                    >
-                      <span
-                        className={`text-sm font-bold ${neueHaasDisplay.className}`}
-                      >
-                        [0{index + 2}]
-                      </span>
-                    </button>
-                  ))}
-                </div>
+                ))}
               </div>
 
               {/* Desktop Layout - Scrollable Gallery */}
@@ -312,11 +286,11 @@ const ShopPage: React.FC = () => {
                               <Image
                                 src={product.image}
                                 alt={product.name}
-                                width={1200}
-                                height={1200}
+                                width={1000}
+                                height={1000}
                                 className="object-cover transition-opacity hover:opacity-90"
                                 priority={index === 0}
-                                style={{ height: '700px', width: 'auto' }}
+                                style={{ height: '600px', width: 'auto' }}
                               />
                             </div>
                           </Link>
@@ -346,7 +320,7 @@ const ShopPage: React.FC = () => {
                 </div>
 
                 {/* Column 3: Product Information (Right Side) */}
-                <div className="sticky top-0 h-screen lg:col-span-1">
+                <div className="sticky top-0 ml-4 h-screen lg:col-span-1">
                   <div className="flex h-full flex-col justify-center text-left">
                     <h3
                       className={`mb-2 text-xl font-bold text-black ${neueHaasDisplay.className}`}
@@ -363,31 +337,51 @@ const ShopPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Bottom Thumbnail Grid */}
-            <div className="grid hidden grid-cols-2 gap-3 sm:block lg:gap-4">
-              {SHOP_PRODUCTS.map((product, index) => (
-                <Link
-                  key={index}
-                  href={`/shop/${product.id}`}
-                  className="relative mx-auto aspect-[3/4] max-w-xs cursor-none overflow-hidden border-2 border-black transition-opacity hover:opacity-80 lg:max-w-sm"
-                >
+            {/* Related Product - List View
+            <div className="mt-8 hidden border-t border-gray-200 pt-8 lg:block">
+              <h3
+                className={`mb-4 text-lg font-bold text-black ${neueHaasDisplay.className}`}
+              >
+                RELATED PRODUCTS
+              </h3>
+              <div className="flex items-center space-x-4 border-2 border-black p-4">
+                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden border border-gray-300">
                   <Image
-                    src={product.image}
-                    alt={product.name}
+                    src={SHOP_PRODUCTS[activeProductIndex === 0 ? 1 : 0].image}
+                    alt={SHOP_PRODUCTS[activeProductIndex === 0 ? 1 : 0].name}
                     fill
-                    className="object-cover transition-transform duration-300 hover:scale-102"
+                    className="object-cover"
                   />
-                  {/* Active indicator */}
-                  {index === activeProductIndex && (
-                    <div className="absolute inset-0 border-2 border-black"></div>
-                  )}
+                </div>
+                <div className="flex-1">
+                  <h4
+                    className={`text-sm font-bold text-black ${neueHaasDisplay.className}`}
+                  >
+                    {SHOP_PRODUCTS[activeProductIndex === 0 ? 1 : 0].name}
+                  </h4>
+                  <p
+                    className={`text-xs text-gray-600 italic ${halTimezone.className}`}
+                  >
+                    {SHOP_PRODUCTS[activeProductIndex === 0 ? 1 : 0].subtitle}
+                  </p>
+                  <p
+                    className={`text-xs font-bold text-black ${neueHaasDisplay.className}`}
+                  >
+                    {SHOP_PRODUCTS[activeProductIndex === 0 ? 1 : 0].price}
+                  </p>
+                </div>
+                <Link
+                  href={`/shop/${SHOP_PRODUCTS[activeProductIndex === 0 ? 1 : 0].id}`}
+                  className="flex-shrink-0 border border-black px-4 py-2 text-xs font-bold text-black transition-colors hover:bg-black hover:text-white"
+                >
+                  VIEW
                 </Link>
-              ))}
-            </div>
+              </div>
+            </div> */}
           </div>
 
           {/* Newsletter signup */}
-          <div className="rounded-md bg-neutral-100 p-8 text-center text-black">
+          {/* <div className="rounded-md bg-neutral-100 p-8 text-center text-black">
             <h2
               className={`mb-4 text-2xl font-bold ${neueHaasDisplay.className}`}
             >
@@ -409,7 +403,7 @@ const ShopPage: React.FC = () => {
                 SUBSCRIBE
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

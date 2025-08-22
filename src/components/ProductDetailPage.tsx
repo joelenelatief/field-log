@@ -12,20 +12,6 @@ import { useRouter } from 'next/navigation';
 const PRODUCT_DATA = {
   '1': {
     id: '1',
-    name: 'DARKSLIDE BELT',
-    subtitle: 'Burgundy',
-    price: '$198 USD',
-    images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
-    description: `The Darkslide Belt is a refined take on the classic utility belt, featuring intricate hand-stitched details. Crafted from high-quality 100% Argentinian leather, this belt features a dedicated utilitarian pocket and secret snap loops to hold supplies while keeping you chic in any occasion.
-
-Whether you're exploring the far-flung abroad or strolling an location, the Darkslide Belt ensures that your essential tools are always within reach.`,
-    designTeam: 'TB LI COI Creative Director: Paulo Risco | AOC COI',
-    director: 'Creative Director: Paulo Risco | NYC, USA',
-    manufacturer: 'Manufactured: Pulisa Culambia | CUA, PERU',
-    technicalDesigner: 'Technical Designer: Tomies Chanez | REIII, COI',
-  },
-  '2': {
-    id: '2',
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
@@ -39,22 +25,31 @@ Annick and Pedro spent a year getting to know and, vetting artisans who work wit
     manufacturer: 'Published by Field Log LLC | 2025',
     technicalDesigner: 'Design & Photography: Field Log Team',
   },
-};
+  '2': {
+    id: '2',
+    name: 'DARKSLIDE BELT',
+    subtitle: 'Burgundy',
+    price: '$198 USD',
+    images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
+    description: `The Darkslide Belt is a refined take on the classic utility belt, featuring intricate hand-stitched details. Crafted from high-quality 100% Argentinian leather, this belt features a dedicated utilitarian pocket and secret snap loops to hold supplies while keeping you chic in any occasion.
 
-const RELATED_IMAGES = [
-  '/images/image1.png',
-  '/images/image2.png',
-  '/images/field_log_book.png',
-  '/images/image8.png',
-];
+Whether you're exploring the far-flung abroad or strolling an location, the Darkslide Belt ensures that your essential tools are always within reach.`,
+    designTeam: 'TB LI COI Creative Director: Paulo Risco | AOC COI',
+    director: 'Creative Director: Paulo Risco | NYC, USA',
+    manufacturer: 'Manufactured: Pulisa Culambia | CUA, PERU',
+    technicalDesigner: 'Technical Designer: Tomies Chanez | REIII, COI',
+  },
+};
 
 interface ProductDetailPageProps {
   productId: string;
 }
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
+  // Ensure component only renders once
+  const componentKey = `product-${productId}`;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
+
   const router = useRouter();
   const product = PRODUCT_DATA[productId as keyof typeof PRODUCT_DATA];
 
@@ -95,7 +90,10 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
   return (
     <>
       <CustomCursor />
-      <div className="min-h-screen cursor-none bg-[#F6F7EF] p-8">
+      <div
+        className="min-h-screen cursor-none bg-[#F6F7EF] p-4 sm:p-8"
+        key={componentKey}
+      >
         <div className="mx-auto max-w-6xl">
           {/* Back/Next Navigation */}
           <div className="mb-8 flex items-center justify-between">
@@ -114,7 +112,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
           </div>
 
           {/* Main Product Section */}
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Left Side - Product Image */}
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden bg-white">
@@ -189,7 +187,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
 
             {/* Right Side - Product Info */}
             <div className="space-y-6">
-              <div>
+              <div className="mb-6">
                 <h1
                   className={`text-2xl font-bold text-black ${neueHaasDisplay.className}`}
                 >
@@ -221,12 +219,12 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 href="https://shopify.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between border border-black p-4 text-black transition-colors hover:bg-black hover:text-white"
+                className="flex items-center justify-between rounded-md border border-black p-4 text-black transition-colors hover:bg-black hover:text-white"
               >
                 <span
                   className={`text-sm font-medium ${neueHaasDisplay.className}`}
                 >
-                  SHOP
+                  BUY NOW
                 </span>
                 <span
                   className={`text-sm font-bold ${neueHaasDisplay.className}`}
@@ -238,7 +236,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
           </div>
 
           {/* Bottom Section - View Options */}
-          <div className="mt-12 flex items-center justify-between border-t border-gray-300 pt-8">
+          {/* <div className="mt-12 flex items-center justify-between border-t border-gray-300 pt-8">
             <div className="flex space-x-8">
               <button
                 onClick={() => setViewMode('grid')}
@@ -261,40 +259,51 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 LIST VIEW
               </button>
             </div>
-          </div>
+          </div> */}
 
           {/* Related Images - Grid/List View */}
-          <div className="mt-8">
-            {viewMode === 'grid' ? (
-              // Grid View
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                {RELATED_IMAGES.map((image, index) => (
-                  <div
-                    key={index}
-                    className="aspect-square overflow-hidden bg-white transition-transform hover:scale-105"
-                  >
-                    <Image
-                      src={image}
-                      alt={`Related image ${index + 1}`}
-                      className="h-full w-full object-cover"
-                      width={200}
-                      height={200}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
+          <div className="mt-8 sm:hidden">
+            {/* {viewMode === 'grid' ? ( */}
+            {/* // Grid View */}
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {Object.values(PRODUCT_DATA).map((currentProduct, index) => (
+                <div
+                  key={index}
+                  className={`aspect-square overflow-hidden bg-white transition-transform hover:scale-105 ${
+                    index === currentProductIndex
+                      ? 'border-2 border-black opacity-60'
+                      : ''
+                  }`}
+                  onClick={() => router.push(`/shop/${currentProduct.id}`)}
+                >
+                  <Image
+                    src={currentProduct.images[0]}
+                    alt={currentProduct.name}
+                    className="h-full w-full object-cover"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+              ))}
+            </div>
+            {/* ) : (
               // List View
               <div className="space-y-6">
-                {RELATED_IMAGES.map((image, index) => (
+                {Object.values(PRODUCT_DATA).map((currentProduct, index) => (
                   <div
                     key={index}
                     className="flex items-center space-x-6 border-b border-gray-200 pb-6"
                   >
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden bg-white">
+                    <div
+                      className={`h-24 w-24 flex-shrink-0 overflow-hidden bg-white ${
+                        index === currentProductIndex
+                          ? 'border-2 border-black opacity-60'
+                          : ''
+                      }`}
+                    >
                       <Image
-                        src={image}
-                        alt={`Related image ${index + 1}`}
+                        src={currentProduct.images[0]}
+                        alt={currentProduct.name}
                         className="h-full w-full object-cover"
                         width={96}
                         height={96}
@@ -304,17 +313,17 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                       <h4
                         className={`text-sm font-medium text-black ${neueHaasDisplay.className}`}
                       >
-                        Related Product {index + 1}
+                        {currentProduct.name}
                       </h4>
                       <p
                         className={`text-xs text-gray-600 ${halTimezone.className} mt-1 italic`}
                       >
-                        Curated artisan piece from our collection
+                        {currentProduct.subtitle}
                       </p>
                       <p
                         className={`text-sm font-bold text-black ${neueHaasDisplay.className} mt-2`}
                       >
-                        ${[75, 120, 95, 140][index % 4]} USD
+                        {currentProduct.price}
                       </p>
                     </div>
                     <button
@@ -325,7 +334,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Footer */}

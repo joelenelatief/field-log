@@ -146,16 +146,20 @@ const AboutPage: React.FC = () => {
                   onClick={() => handleSlideChange(tab.id)}
                   className={`group relative flex cursor-none items-center rounded-l-lg border-2 border-r-0 border-[#92938D] px-4 py-6 text-sm font-bold shadow-md transition-all ${
                     activeSlideIndex === tab.id
-                      ? 'text-black italic underline'
-                      : 'text-gray-500 hover:scale-105 hover:bg-white/80 hover:shadow-sm'
+                      ? 'bg-opacity-60 bg-white text-black italic underline'
+                      : 'text-gray-600 hover:scale-103 hover:bg-white/80 hover:shadow-sm'
                   } ${halTimezone.className} bold`}
                   style={{
-                    backgroundColor:
-                      activeSlideIndex === tab.id
-                        ? tab.bgColor
-                        : 'rgba(255, 255, 255, 0.7)',
                     width: '150px',
                     height: '24px',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(128, 128, 128, 0.3)',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: '0px 16px 40px 0px #0000004D',
+                    opacity: 1,
+                    borderImageSource:
+                      'linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%)',
                   }}
                 >
                   {/* Text - only visible when active */}
