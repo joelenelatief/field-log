@@ -14,7 +14,7 @@ const SHOP_PRODUCTS = [
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
-    image: '/images/field_log_book.png',
+    image: '/images/book-gif2.gif',
     description: 'Curated chronicle of Latin American textile artisans',
   },
   {
@@ -175,9 +175,12 @@ const ShopPage: React.FC = () => {
               </div> */}
 
               {/* Mobile Layout - Stacked Products */}
-              <div className="space-y-24 lg:hidden">
+              <div className="space-y-12 lg:hidden">
                 {SHOP_PRODUCTS.map((product, index) => (
-                  <div key={product.id} className="flex flex-col items-center">
+                  <div
+                    key={product.id}
+                    className="flex flex-col items-center border-b border-gray-300 pb-8"
+                  >
                     {/* Product Info */}
                     <div className="mb-4 text-center">
                       <h3
@@ -193,7 +196,7 @@ const ShopPage: React.FC = () => {
                     </div>
 
                     {/* Product Image */}
-                    <div className="relative mb-6">
+                    <div className="relative mb-2">
                       <Link
                         href={`/shop/${product.id}`}
                         className="cursor-none"
@@ -207,16 +210,17 @@ const ShopPage: React.FC = () => {
                             className="object-cover transition-opacity hover:opacity-90"
                             priority={index === 0}
                             style={{ height: '400px', width: 'auto' }}
+                            unoptimized
                           />
                         </div>
                       </Link>
                     </div>
 
                     {/* Add to Cart Button */}
-                    <div className="w-full max-w-sm">
+                    <div className="mb-4 w-full max-w-sm">
                       <a
                         href={`/shop/${product.id}`}
-                        className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-4 text-black transition-colors hover:bg-black hover:text-white"
+                        className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-2 text-black transition-colors hover:bg-black hover:text-white"
                       >
                         <span
                           className={`text-base font-bold ${neueHaasDisplay.className}`}
@@ -268,7 +272,7 @@ const ShopPage: React.FC = () => {
                     msOverflowStyle: 'none' /* Internet Explorer 10+ */,
                   }}
                 >
-                  <div className="space-y-12 py-8 pb-24">
+                  <div className="space-y-12 py-2 pb-8">
                     {SHOP_PRODUCTS.map((product, index) => (
                       <div
                         key={product.id}
@@ -291,6 +295,7 @@ const ShopPage: React.FC = () => {
                                 className="object-cover transition-opacity hover:opacity-90"
                                 priority={index === 0}
                                 style={{ height: '600px', width: 'auto' }}
+                                unoptimized
                               />
                             </div>
                           </Link>
@@ -299,7 +304,7 @@ const ShopPage: React.FC = () => {
                           <div className="flex justify-center py-4">
                             <a
                               href={`/shop/${product.id}`}
-                              className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
+                              className="flex w-full cursor-none items-center justify-between border border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
                             >
                               <span
                                 className={`text-sm font-bold ${neueHaasDisplay.className}`}

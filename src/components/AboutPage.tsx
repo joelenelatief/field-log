@@ -120,7 +120,7 @@ const AboutPage: React.FC = () => {
             <h1
               className={`mb-2 text-2xl font-semibold text-black ${neueHaasDisplay.className}`}
             >
-              ABOUT FIELD LOG{' '}
+              ABOUT FIELD LOG.{' '}
               <span
                 className={`ml-2 italic underline ${halTimezone.className}`}
               >

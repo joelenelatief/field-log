@@ -33,23 +33,18 @@ const AboutSection: React.FC<AboutSectionProps> = ({
         >
           <span className="font-semibold text-black">FIELD LOG </span>
           {'  '}
-          develops projects that honor culture, history, craft, and heritage
-          through storytelling — our mediums being:{' '}
+          is a curated chronicle of Latin American artisans—a reimagined
+          directory where craft meets contemporary design. This edition explores
+          eight—<i>talleres</i>—workshops across Perú and Colombia, where
+          tradition is not preserved but evolved—woven, stitched, and sculpted
+          into the present. Annick Maria and Pedro Pablo spent a year getting to
+          know and documenting artisans working in leather, alpaca, crochet, and
+          more—preserving tradition while pushing the boundaries of their craft.
+          More than sites of production, these talleres embody generational
+          skill, cultural resilience, and pure artistry. This book is not just
+          an archive; it is an invitation to immerse in craftsmanship as it
+          exists today.
         </p>
-        <ul className="mt-2 ml-4 list-disc space-y-0 text-xs text-gray-700">
-          <li>
-            <span className={`italic ${halTimezone.className}`}>voice</span>{' '}
-            (conversation, oral history, interviews)
-          </li>
-          <li>
-            <span className={`italic ${halTimezone.className}`}>words</span>{' '}
-            (essays, brand writing, editorial)
-          </li>
-          <li>
-            <span className={`italic ${halTimezone.className}`}>images</span>{' '}
-            (photography, video, visual documentation)
-          </li>
-        </ul>
       </div>
 
       {/* Services */}
@@ -75,7 +70,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
       </div>
 
       {/* Field Log Book Section */}
-      <div>
+      {/* <div>
         <h3
           className={`mb-3 text-xs font-semibold text-black ${neueHaasDisplay.className}`}
         >
@@ -95,7 +90,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
           of production, these workshops embody generational skill, cultural
           resilience, and pure artistry.
         </p>
-      </div>
+      </div> */}
 
       {/* Buy the Book Section */}
       <div>
@@ -106,6 +101,24 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             BUY THE BOOK
           </button>
         </Link>
+      </div>
+
+      {/* Founder Information */}
+      <div className="mt-6">
+        <p className={`text-xs text-gray-700 ${neueHaasDisplay.className}`}>
+          <span className="text-semibold mr-1 font-semibold">
+            Annick Maria Saralegui:
+          </span>
+          <br />
+          Founder & Chief Creative Officer
+        </p>
+        <p
+          className={`mt-2 text-xs text-gray-700 ${neueHaasDisplay.className}`}
+        >
+          <span className="text-semibold mr-1 font-semibold">Pedro Pablo:</span>
+          <br />
+          Photographer & Creative Director
+        </p>
       </div>
 
       {/* Footer - Only shown when showFooter is true */}

@@ -15,13 +15,12 @@ const PRODUCT_DATA = {
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
-    images: ['/images/field_log_book.png'],
+    images: ['/images/book-gif2.gif'],
     description: `FIELD LOG is a curated chronicle of Latin American textile artisans—a reimagined directory where craft meets contemporary design. This edition explores eight 'talleres' textile artisan workshops across Perú and Colombia, where tradition is not preserved but evolved—woven, stitched, and sculpted into the present.
 
 Annick and Pedro spent a year getting to know and, vetting artisans who work with leather, alpaca, crochet, telar weaving, and more, preserving and pushing the boundaries of their craft. More than places of production, these workshops embody generational skill, cultural resilience, and pure artistry.`,
     designTeam:
       'Field Log develop projects that honor culture, history, craft, and heritage through storytelling',
-    director: 'Creative Directors: Annick & Pedro | Field Log',
     manufacturer: 'Published by Field Log LLC | 2025',
     technicalDesigner: 'Design & Photography: Field Log Team',
   },
@@ -31,13 +30,13 @@ Annick and Pedro spent a year getting to know and, vetting artisans who work wit
     subtitle: 'Burgundy',
     price: '$198 USD',
     images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
-    description: `The Darkslide Belt is a refined take on the classic utility belt, featuring intricate hand-stitched details. Crafted from high-quality 100% Argentinian leather, this belt features a dedicated utilitarian pocket and secret snap loops to hold supplies while keeping you chic in any occasion.
+    description: `The Darkslide Belt is a refined take on the classic utility belt, designed with photographers in mind. Crafted from high-quality 100% Peruvian leather, this belt features a dedicated darkslide pocket and secure snap loops to hold rolls of film, making it an ideal companion for both analog and hybrid shooters.
 
-Whether you're exploring the far-flung abroad or strolling an location, the Darkslide Belt ensures that your essential tools are always within reach.`,
-    designTeam: 'TB LI COI Creative Director: Paulo Risco | AOC COI',
-    director: 'Creative Director: Paulo Risco | NYC, USA',
-    manufacturer: 'Manufactured: Pulisa Culambia | CUA, PERU',
-    technicalDesigner: 'Technical Designer: Tomies Chanez | REIII, COI',
+Whether you're working in a fast-paced studio or shooting on location, the Darkslide Belt ensures that your essential tools are always within reach.`,
+    designTeam: 'Creative Direction: Pedro Pablo | MDE, COL',
+    manufacturer: 'Art Direction: Annick Saralegui | NYC, USA',
+    technicalDesigner:
+      'Technical Design: Tom Chaverra | MDE, USA | Manufacturer: Pelusa Caballero | LMA, PER',
   },
 };
 
@@ -122,6 +121,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                   className="h-full w-full object-cover transition-opacity duration-300 ease-in-out"
                   width={600}
                   height={750}
+                  unoptimized={true}
                 />
 
                 {/* Navigation arrows */}
@@ -199,7 +199,6 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                   {product.subtitle}
                 </p>
               </div>
-
               <div className="space-y-4">
                 <p
                   className={`text-sm leading-relaxed text-gray-800 ${neueHaasDisplay.className}`}
@@ -210,16 +209,14 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
 
               <div className="space-y-2 text-xs text-gray-600">
                 <p>{product.designTeam}</p>
-                <p>{product.director}</p>
                 <p>{product.manufacturer}</p>
                 <p>{product.technicalDesigner}</p>
               </div>
-
               <a
                 href="https://shopify.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-md border border-black bg-black p-4 text-white transition-colors hover:bg-white hover:text-black"
+                className="flex items-center justify-between rounded-md border border-black p-3 text-black transition-colors hover:bg-black hover:text-white"
               >
                 <span
                   className={`text-sm font-medium ${neueHaasDisplay.className}`}
@@ -282,6 +279,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                     className="h-full w-full object-cover"
                     width={200}
                     height={200}
+                    unoptimized={true}
                   />
                 </div>
               ))}

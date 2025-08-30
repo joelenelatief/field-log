@@ -10,28 +10,28 @@ import { gsap } from 'gsap';
 const fieldLogSpreads = [
   {
     id: 1,
-    image: '/images/image3.png',
+    image: '/images/child.png',
     location: 'CARHUAZ, PERÚ',
     coordinates: { lat: '9.2817° S', lng: '77.6450° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
   },
   {
     id: 2,
-    image: '/images/about/polaroid.png',
+    image: '/images/threadbw.png',
     location: 'HUARAZ, PERÚ',
-    coordinates: { lat: '9.5295° S', lng: '77.5292° W' },
+    coordinates: { lat: '9.2817° S', lng: '77.6450° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
   },
   {
     id: 3,
-    image: '/images/image3.png',
+    image: '/images/foot.png',
     location: 'HUANCAVELICA, PERÚ',
     coordinates: { lat: '9.2817° S', lng: '77.6450° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
   },
   {
     id: 4,
-    image: '/images/image4.png',
+    image: '/images/ladies.png',
     location: 'CARHUAZ, PERÚ',
     coordinates: { lat: '9.2817° S', lng: '77.6450° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
@@ -54,10 +54,10 @@ const fieldLogSpreads = [
 
 // Bottom thumbnail images
 const thumbnailImages = [
-  '/images/image3.png',
-  '/images/about/polaroid.png',
-  '/images/image3.png',
-  '/images/image4.png',
+  '/images/child.png',
+  '/images/threadbw.png',
+  '/images/foot.png',
+  '/images/ladies.png',
   '/images/image7.png',
   '/images/image8.png',
 ];

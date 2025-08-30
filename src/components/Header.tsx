@@ -79,6 +79,12 @@ const Header: React.FC = () => {
         >
           SHOP ALL
         </Link>
+        <a
+          href="mailto:hello@field-log.com"
+          className={`ml-6 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600`}
+        >
+          CONTACT US
+        </a>
       </nav>
 
       {/* Mobile Menu Button */}
@@ -134,6 +140,13 @@ const Header: React.FC = () => {
               >
                 SHOP ALL
               </Link>
+              <a
+                href="mailto:hello@field-log.com"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100`}
+              >
+                CONTACT US
+              </a>
             </div>
           </div>
         )}

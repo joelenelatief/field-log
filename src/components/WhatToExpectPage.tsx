@@ -80,7 +80,9 @@ const WhatToExpectPage: React.FC<WhatToExpectPageProps> = ({
         <div className="h-3 w-20 rounded border border-black bg-[#FFF8BA]"></div>
 
         {/* Title */}
-        <h1 className={`text-xl font-bold ${neueHaasDisplay.className}`}>
+        <h1
+          className={`text-xl font-bold tracking-tight ${neueHaasDisplay.className}`}
+        >
           &ldquo;ERS&rdquo;
         </h1>
 
