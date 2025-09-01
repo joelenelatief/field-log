@@ -17,21 +17,21 @@ const magazineSpreads = [
     sidebarImage: '/images/about/shoe.png',
     slideshowImage: '/images/about/glove.png',
     title: 'DEAR [READER]',
-    attribution: 'MACHU PICCHU - PERU 2024',
+    attribution: 'CUZCO, PERÚ',
   },
   {
     id: 2,
     sidebarImage: '/images/about/window.png',
     slideshowImage: '/images/about/shore.png',
     title: 'WHAT TO EXPECT',
-    attribution: 'CUZCO - PERU 2024',
+    attribution: 'CHOCLOCO, PERÚ',
   },
   {
     id: 3,
     sidebarImage: '/images/rocks.jpg',
     slideshowImage: '/images/about/blur.png',
     title: 'MANIFESTO',
-    attribution: 'GUATEMALA CITY - 2024',
+    attribution: 'HUANCAVELICA, PERÚ',
   },
 ];
 
@@ -121,11 +121,12 @@ const AboutPage: React.FC = () => {
               className={`mb-2 text-2xl font-semibold text-black ${neueHaasDisplay.className}`}
             >
               ABOUT FIELD LOG.{' '}
-              <span
-                className={`ml-2 italic underline ${halTimezone.className}`}
+              <a
+                href="mailto:hello@fieldlog.com"
+                className={`ml-2 italic underline ${halTimezone.className} transition-opacity hover:opacity-80`}
               >
                 Contact Us.
-              </span>
+              </a>
             </h1>
 
             {/* Subtitle */}

@@ -45,7 +45,7 @@ const WhatToExpectPage: React.FC<WhatToExpectPageProps> = ({
         {/* Attribution */}
         <div>
           <p
-            className={`mb-2 text-xs text-gray-600 ${neueHaasDisplay.className}`}
+            className={`mb-1 text-xs text-gray-600 ${neueHaasDisplay.className}`}
           >
             Words by:
           </p>
@@ -68,7 +68,7 @@ const WhatToExpectPage: React.FC<WhatToExpectPageProps> = ({
 
         {/* Attribution under image */}
         <p
-          className={`bold mt-2 text-xs text-gray-600 ${neueHaasDisplay.className}`}
+          className={`bold mt-1 text-xs text-gray-600 ${neueHaasDisplay.className}`}
         >
           {attribution}
         </p>
@@ -92,7 +92,7 @@ const WhatToExpectPage: React.FC<WhatToExpectPageProps> = ({
             {/* Definition Header */}
             <div className="mb-4">
               <p
-                className={`text-sm text-gray-600 ${neueHaasDisplay.className}`}
+                className={`text-sm leading-tight text-gray-600 ${neueHaasDisplay.className}`}
               >
                 suffix /3ːrs/ 
               </p>

@@ -45,7 +45,7 @@ const DearReaderPage: React.FC<DearReaderPageProps> = ({
         {/* Attribution */}
         <div>
           <p
-            className={`mb-2 text-xs text-gray-600 ${neueHaasDisplay.className}`}
+            className={`mb-1 text-xs text-gray-600 ${neueHaasDisplay.className}`}
           >
             Words by:
           </p>
@@ -68,7 +68,7 @@ const DearReaderPage: React.FC<DearReaderPageProps> = ({
 
         {/* Attribution under image */}
         <p
-          className={`bold mt-2 text-xs text-gray-600 ${neueHaasDisplay.className}`}
+          className={`bold mt-1 text-xs text-gray-600 ${neueHaasDisplay.className}`}
         >
           {attribution}
         </p>

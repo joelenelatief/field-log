@@ -16,13 +16,22 @@ const PRODUCT_DATA = {
     subtitle: 'Limited Edition',
     price: '$65 USD',
     images: ['/images/book-gif2.gif'],
-    description: `FIELD LOG is a curated chronicle of Latin American textile artisans—a reimagined directory where craft meets contemporary design. This edition explores eight 'talleres' textile artisan workshops across Perú and Colombia, where tradition is not preserved but evolved—woven, stitched, and sculpted into the present.
-
-Annick and Pedro spent a year getting to know and, vetting artisans who work with leather, alpaca, crochet, telar weaving, and more, preserving and pushing the boundaries of their craft. More than places of production, these workshops embody generational skill, cultural resilience, and pure artistry.`,
-    designTeam:
-      'Field Log develop projects that honor culture, history, craft, and heritage through storytelling',
-    manufacturer: 'Published by Field Log LLC | 2025',
-    technicalDesigner: 'Design & Photography: Field Log Team',
+    description: `FIELD LOG is a curated chronicle of Latin American artisans—a reimagined
+          directory where craft meets contemporary design. This edition explores
+          eight—talleres—workshops across Perú and Colombia, where
+          tradition is not preserved but evolved—woven, stitched, and sculpted
+          into the present.`,
+    description2: `Annick Maria and Pedro Pablo spent a year getting to
+          know and documenting artisans working in leather, alpaca, crochet, and
+          more—preserving tradition while pushing the boundaries of their craft.
+          More than sites of production, these talleres embody generational
+          skill, cultural resilience, and pure artistry. This book is not just
+          an archive; it is an invitation to immerse in craftsmanship as it
+          exists today.`,
+    designTeam: 'Editorial Design by Annick Maria',
+    manufacturer: 'All images shot on Medium Format Film by Pedro Pablo ',
+    technicalDesigner: 'Printed in Mexico by Nocaut LLC ',
+    copyEdited: 'Copy edited by Armando Chardiet ',
   },
   '2': {
     id: '2',
@@ -30,13 +39,12 @@ Annick and Pedro spent a year getting to know and, vetting artisans who work wit
     subtitle: 'Burgundy',
     price: '$198 USD',
     images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
-    description: `The Darkslide Belt is a refined take on the classic utility belt, designed with photographers in mind. Crafted from high-quality 100% Peruvian leather, this belt features a dedicated darkslide pocket and secure snap loops to hold rolls of film, making it an ideal companion for both analog and hybrid shooters.
-
-Whether you're working in a fast-paced studio or shooting on location, the Darkslide Belt ensures that your essential tools are always within reach.`,
+    description: `The Darkslide Belt is a refined take on the classic utility belt, designed with photographers in mind. Crafted from high-quality 100% Peruvian leather, this belt features a dedicated darkslide pocket and secure snap loops to hold rolls of film, making it an ideal companion for both analog and hybrid shooters.`,
+    description2: `Whether you're working in a fast-paced studio or shooting on location, the Darkslide Belt ensures that your essential tools are always within reach.`,
     designTeam: 'Creative Direction: Pedro Pablo | MDE, COL',
     manufacturer: 'Art Direction: Annick Saralegui | NYC, USA',
-    technicalDesigner:
-      'Technical Design: Tom Chaverra | MDE, USA | Manufacturer: Pelusa Caballero | LMA, PER',
+    technicalDesigner: 'Technical Design: Tom Chaverra | MDE, USA',
+    copyEdited: 'Manufacturer: Pelusa Caballero | LMA, PE',
   },
 };
 
@@ -205,12 +213,18 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 >
                   {product.description}
                 </p>
+                <p
+                  className={`text-sm leading-relaxed text-gray-800 ${neueHaasDisplay.className}`}
+                >
+                  {product.description2}
+                </p>
               </div>
 
-              <div className="space-y-2 text-xs text-gray-600">
+              <div className="space-y-1 text-xs text-gray-600 italic">
                 <p>{product.designTeam}</p>
                 <p>{product.manufacturer}</p>
                 <p>{product.technicalDesigner}</p>
+                <p>{product.copyEdited}</p>
               </div>
               <a
                 href="https://shopify.com"
