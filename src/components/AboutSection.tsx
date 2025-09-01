@@ -123,7 +123,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
 
       {/* Footer - Only shown when showFooter is true */}
       {showFooter && (
-        <div className="mt-8 border-t border-gray-300 pt-8">
+        <div className="mt-8 border-t border-gray-300 pt-4 pb-4">
           <div className="flex flex-col space-y-2 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
             <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
             <span className={neueHaasDisplay.className}>

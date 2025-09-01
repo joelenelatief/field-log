@@ -350,7 +350,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
           </div>
 
           {/* Footer */}
-          <div className="mt-16 border-t border-gray-300 pt-8">
+          <div className="mt-16 border-t border-gray-300 pt-4 pb-4">
             <div className="flex items-center justify-between text-xs text-gray-500">
               <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
               <span className={neueHaasDisplay.className}>

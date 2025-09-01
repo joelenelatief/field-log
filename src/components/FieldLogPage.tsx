@@ -364,7 +364,7 @@ const FieldLogPage: React.FC = () => {
           </div>
 
           {/* Footer - Hidden on mobile home page since it's added after AboutSection in Layout */}
-          <footer className="hidden border-t border-gray-200 px-8 py-6 lg:block">
+          <footer className="hidden border-t border-gray-200 px-4 py-4 lg:block">
             <div className="flex items-center justify-between text-xs text-gray-500">
               <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
               <span className={neueHaasDisplay.className}>

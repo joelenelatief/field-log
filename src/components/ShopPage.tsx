@@ -179,7 +179,7 @@ const ShopPage: React.FC = () => {
                 {SHOP_PRODUCTS.map((product, index) => (
                   <div
                     key={product.id}
-                    className="flex flex-col items-center border-b border-gray-300 pb-8"
+                    className="flex flex-col items-center pb-8"
                   >
                     {/* Product Info */}
                     <div className="mb-4 text-center">
@@ -409,6 +409,18 @@ const ShopPage: React.FC = () => {
               </button>
             </div>
           </div> */}
+        </div>
+      </div>
+      <div className="mt-8 border-t border-gray-300 pt-4 pb-4">
+        <div className="flex flex-col space-y-2 px-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+          <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
+          <span className={neueHaasDisplay.className}>ESTABLISHED c. 2025</span>
+          <a
+            href="https://instagram.com/fieldlog"
+            className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
+          >
+            INSTAGRAM
+          </a>
         </div>
       </div>
     </>
