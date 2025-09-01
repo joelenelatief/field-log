@@ -35,15 +35,15 @@ const AboutSection: React.FC<AboutSectionProps> = ({
           {'  '}
           is a curated chronicle of Latin American artisans—a reimagined
           directory where craft meets contemporary design. This edition explores
-          eight—<i>talleres</i>—workshops across Perú and Colombia, where
-          tradition is not preserved but evolved—woven, stitched, and sculpted
-          into the present. Annick Maria and Pedro Pablo spent a year getting to
-          know and documenting artisans working in leather, alpaca, crochet, and
-          more—preserving tradition while pushing the boundaries of their craft.
-          More than sites of production, these talleres embody generational
-          skill, cultural resilience, and pure artistry. This book is not just
-          an archive; it is an invitation to immerse in craftsmanship as it
-          exists today.
+          eight—<i className={halTimezone.className}>talleres</i>—workshops
+          across Perú and Colombia, where tradition is not preserved but
+          evolved—woven, stitched, and sculpted into the present. Annick Maria
+          and Pedro Pablo spent a year getting to know and documenting artisans
+          working in leather, alpaca, crochet, and more—preserving tradition
+          while pushing the boundaries of their craft. More than sites of
+          production, these talleres embody generational skill, cultural
+          resilience, and pure artistry. This book is not just an archive; it is
+          an invitation to immerse in craftsmanship as it exists today.
         </p>
       </div>
 
