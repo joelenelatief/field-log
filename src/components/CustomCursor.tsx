@@ -25,7 +25,7 @@ export const CustomCursor: React.FC = () => {
     <>
       {/* Main cursor with outer border */}
       <div
-        className="pointer-events-none fixed z-50 flex hidden h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full sm:block"
+        className="pointer-events-none fixed z-50 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full sm:block"
         style={{
           left: `${cursorPosition.x}px`,
           top: `${cursorPosition.y}px`,

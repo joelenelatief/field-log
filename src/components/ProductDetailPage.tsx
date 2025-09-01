@@ -15,7 +15,7 @@ const PRODUCT_DATA = {
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
-    images: ['/images/book-gif2.gif'],
+    images: ['/images/book-gif2.gif', '/images/field_log_book.png'],
     description: `FIELD LOG is a curated chronicle of Latin American artisans—a reimagined
           directory where craft meets contemporary design. This edition explores
           eight—talleres—workshops across Perú and Colombia, where
