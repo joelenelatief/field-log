@@ -58,13 +58,14 @@ const Header: React.FC = () => {
           >
             HOME
           </Link>
+
           <Link
-            href="/about"
+            href="/shop"
             className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
-              isActive('/about') ? 'border-b border-black' : ''
+              isActive('/shop') ? 'border-b border-black' : ''
             }`}
           >
-            ABOUT US
+            SHOP ALL
           </Link>
         </nav>
       </div>
@@ -72,12 +73,12 @@ const Header: React.FC = () => {
       {/* Desktop Right side navigation */}
       <nav className="hidden md:block">
         <Link
-          href="/shop"
+          href="/about"
           className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
-            isActive('/shop') ? 'border-b border-black' : ''
+            isActive('/about') ? 'border-b border-black' : ''
           }`}
         >
-          SHOP ALL
+          ABOUT US
         </Link>
       </nav>
 
@@ -117,15 +118,6 @@ const Header: React.FC = () => {
                 HOME
               </Link>
               <Link
-                href="/about"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100 ${
-                  isActive('/about') ? 'border-l-2 border-black underline' : ''
-                }`}
-              >
-                ABOUT US
-              </Link>
-              <Link
                 href="/shop"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100 ${
@@ -133,6 +125,15 @@ const Header: React.FC = () => {
                 }`}
               >
                 SHOP ALL
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-4 py-3 text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:bg-gray-100 ${
+                  isActive('/about') ? 'border-l-2 border-black underline' : ''
+                }`}
+              >
+                ABOUT US
               </Link>
             </div>
           </div>
