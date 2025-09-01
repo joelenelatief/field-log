@@ -14,7 +14,7 @@ const SHOP_PRODUCTS = [
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
-    image: '/images/book-gif2.gif',
+    image: '/images/book-gif3.gif',
     description: 'Curated chronicle of Latin American textile artisans',
   },
   {

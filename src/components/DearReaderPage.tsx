@@ -57,7 +57,7 @@ const DearReaderPage: React.FC<DearReaderPageProps> = ({
         </div>
 
         {/* Image */}
-        <div className="relative aspect-[4/5] w-[100px] border-2 border-[#D6D7CE] md:w-[150px]">
+        <div className="relative aspect-[4/5] w-[150px] border-2 border-[#D6D7CE] md:w-[150px]">
           <Image
             src={image}
             alt="DEAR [READER]"
