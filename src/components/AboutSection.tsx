@@ -17,7 +17,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
       {/* Mobile Image - Only visible on mobile */}
       <div className="mb-6 block sm:mb-0 lg:hidden">
         <Image
-          src="/images/field_log_book.png"
+          src="/images/field_log_book.jpg"
           alt="Field Log Book"
           width={400}
           height={300}

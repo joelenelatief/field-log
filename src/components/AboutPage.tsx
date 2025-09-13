@@ -21,14 +21,14 @@ const magazineSpreads = [
   },
   {
     id: 2,
-    sidebarImage: '/images/about/window.png',
+    sidebarImage: '/images/window2.jpg',
     slideshowImage: '/images/about/shore.png',
     title: 'WHAT TO EXPECT',
     attribution: 'CHOCLOCO, PERÚ',
   },
   {
     id: 3,
-    sidebarImage: '/images/rocks.jpg',
+    sidebarImage: '/images/clouds2.jpg',
     slideshowImage: '/images/about/blur.png',
     title: 'MANIFESTO',
     attribution: 'HUANCAVELICA, PERÚ',

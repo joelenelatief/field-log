@@ -17,7 +17,7 @@ const fieldLogSpreads = [
   },
   {
     id: 2,
-    image: '/images/threadbw.png',
+    image: '/images/mountain2.jpg',
     location: 'HUARAZ, PERÚ',
     coordinates: { lat: '9.2817° S', lng: '77.6450° W' },
     numbers: ['01', '02', '03', '04', '05', '06'],
@@ -55,7 +55,7 @@ const fieldLogSpreads = [
 // Bottom thumbnail images
 const thumbnailImages = [
   '/images/child.png',
-  '/images/threadbw.png',
+  '/images/mountain2.jpg',
   '/images/foot.png',
   '/images/ladies.png',
   '/images/image7.png',
