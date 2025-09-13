@@ -27,7 +27,7 @@ const PRODUCT_DATA = {
           More than sites of production, these talleres embody generational
           skill, cultural resilience, and pure artistry. This book is not just
           an archive; it is an invitation to immerse in craftsmanship as it
-          exists today.`,
+          exists today. This is a limited run of 250 copies.`,
     designTeam: 'Editorial Design by Annick Maria',
     manufacturer: 'All images shot on Medium Format Film by Pedro Pablo ',
     technicalDesigner: 'Printed in Mexico by Nocaut LLC ',
