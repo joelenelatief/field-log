@@ -21,7 +21,7 @@ const magazineSpreads = [
   },
   {
     id: 2,
-    sidebarImage: '/images/mountain2.jpg',
+    sidebarImage: '/images/clouds2.jpg',
     slideshowImage: '/images/about/shore.png',
     title: 'WHAT TO EXPECT',
     attribution: 'CHOCLOCO, PERÚ',
