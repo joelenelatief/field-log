@@ -4,6 +4,9 @@ import './globals.css';
 export const metadata = {
   title: 'Field Log',
   description: 'Field Log Application',
+  icons: {
+    icon: '/favicon.png', // Reference the path to your favicon in public/
+  },
 };
 
 export default function RootLayout({ children }) {
