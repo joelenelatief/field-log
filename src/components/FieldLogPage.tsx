@@ -371,7 +371,7 @@ const FieldLogPage: React.FC = () => {
                 ESTABLISHED c. 2025
               </span>
               <a
-                href="https://instagram.com/fieldlog"
+                href="https://www.instagram.com/field__log/"
                 className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
               >
                 INSTAGRAM

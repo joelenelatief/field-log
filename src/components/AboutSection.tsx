@@ -94,7 +94,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
 
       {/* Buy the Book Section */}
       <div>
-        <Link href="/shop/1">
+        <Link href="/shop/book">
           <button
             className={`cursor-none rounded-md border border-black px-4 py-1 text-sm font-semibold text-black transition-colors hover:bg-black hover:text-white ${neueHaasDisplay.className}`}
           >
@@ -130,7 +130,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
               ESTABLISHED c. 2025
             </span>
             <a
-              href="https://instagram.com/fieldlog"
+              href="https://www.instagram.com/field__log/"
               className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
             >
               INSTAGRAM

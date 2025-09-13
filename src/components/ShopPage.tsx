@@ -10,7 +10,7 @@ import Link from 'next/link';
 // Shop products data
 const SHOP_PRODUCTS = [
   {
-    id: 1,
+    id: 'book',
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
@@ -18,7 +18,7 @@ const SHOP_PRODUCTS = [
     description: 'Curated chronicle of Latin American textile artisans',
   },
   {
-    id: 2,
+    id: 'belt',
     name: 'DARKSLIDE BELT',
     subtitle: 'Burgundy',
     price: '$198 USD',
@@ -304,7 +304,7 @@ const ShopPage: React.FC = () => {
                           <div className="flex justify-center py-4">
                             <a
                               href={`/shop/${product.id}`}
-                              className="flex w-full cursor-none items-center justify-between border border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
+                              className="flex w-full cursor-none items-center justify-between rounded-md border border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
                             >
                               <span
                                 className={`text-sm font-bold ${neueHaasDisplay.className}`}
@@ -416,7 +416,7 @@ const ShopPage: React.FC = () => {
           <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
           <span className={neueHaasDisplay.className}>ESTABLISHED c. 2025</span>
           <a
-            href="https://instagram.com/fieldlog"
+            href="https://www.instagram.com/field__log/"
             className={`transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
           >
             INSTAGRAM

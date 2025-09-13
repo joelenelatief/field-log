@@ -10,8 +10,8 @@ import { useRouter } from 'next/navigation';
 
 // Product data matching the shop page products
 const PRODUCT_DATA = {
-  '1': {
-    id: '1',
+  book: {
+    id: 'book',
     name: 'FIELD LOG BOOK',
     subtitle: 'Limited Edition',
     price: '$65 USD',
@@ -33,8 +33,8 @@ const PRODUCT_DATA = {
     technicalDesigner: 'Printed in Mexico by Nocaut LLC ',
     copyEdited: 'Copy edited by Armando Chardiet ',
   },
-  '2': {
-    id: '2',
+  belt: {
+    id: 'belt',
     name: 'DARKSLIDE BELT',
     subtitle: 'Burgundy',
     price: '$198 USD',
@@ -230,7 +230,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 href="https://shopify.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-md border border-black p-3 text-black transition-colors hover:bg-black hover:text-white"
+                className="flex items-center justify-between rounded-md border border-black bg-black p-3 text-white transition-colors hover:bg-gray-800"
               >
                 <span
                   className={`text-sm font-medium ${neueHaasDisplay.className}`}
@@ -357,7 +357,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 ESTABLISHED c. 2025
               </span>
               <a
-                href="https://instagram.com/fieldlog"
+                href="https://www.instagram.com/field__log/"
                 className={`underline transition-colors hover:text-gray-700 ${neueHaasDisplay.className}`}
               >
                 INSTAGRAM
