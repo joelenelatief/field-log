@@ -122,7 +122,7 @@ const AboutPage: React.FC = () => {
             >
               ABOUT FIELD LOG.{' '}
               <a
-                href="mailto:hello@fieldlog.com"
+                href="mailto:hello@field-log.com"
                 className={`ml-2 italic underline ${halTimezone.className} transition-opacity hover:opacity-80`}
               >
                 Contact Us.
