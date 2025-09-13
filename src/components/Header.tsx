@@ -36,20 +36,24 @@ const Header: React.FC = () => {
   return (
     <header
       ref={headerRef}
-      className="relative z-[9998] flex w-full items-center justify-between border-b border-black px-8 py-4"
+      className="relative z-[9998] flex w-full items-center justify-between border-b border-black/32 px-4 pr-8 sm:px-0 sm:pr-4"
     >
       {/* Left side - FIELD LOG branding */}
-      <div className="flex items-center space-x-8">
-        <Link
-          href="/"
-          className={`text-lg font-semibold ${neueHaasDisplay.className} flex items-center space-x-3 text-black`}
-        >
-          <span>FIELD</span>
-          <div className="h-px w-16 bg-black"></div>
-          <span>LOG</span>
-        </Link>
+      <div className="flex items-center">
+        <div className="justify-left relative flex items-center px-8 py-4 sm:w-80">
+          {/* Vertical border that extends full height */}
+          <div className="absolute top-0 right-0 bottom-0 w-px bg-black/32"></div>
+          <Link
+            href="/"
+            className={`text-lg font-semibold ${neueHaasDisplay.className} flex items-center space-x-3 text-black`}
+          >
+            <span>FIELD</span>
+            <div className="h-px w-16 bg-black"></div>
+            <span>LOG</span>
+          </Link>
+        </div>
 
-        <nav className="hidden space-x-6 md:flex">
+        <nav className="hidden space-x-6 py-4 pl-8 md:flex">
           <Link
             href="/"
             className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
@@ -60,12 +64,12 @@ const Header: React.FC = () => {
           </Link>
 
           <Link
-            href="/shop"
+            href="/about"
             className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
-              isActive('/shop') ? 'border-b border-black' : ''
+              isActive('/about') ? 'border-b border-black' : ''
             }`}
           >
-            SHOP ALL
+            ABOUT US
           </Link>
         </nav>
       </div>
@@ -73,12 +77,12 @@ const Header: React.FC = () => {
       {/* Desktop Right side navigation */}
       <nav className="hidden md:block">
         <Link
-          href="/about"
+          href="/shop"
           className={`text-sm font-medium ${neueHaasDisplay.className} text-black transition-colors hover:text-gray-600 ${
-            isActive('/about') ? 'border-b border-black' : ''
+            isActive('/shop') ? 'border-b border-black' : ''
           }`}
         >
-          ABOUT US
+          SHOP ALL
         </Link>
       </nav>
 
