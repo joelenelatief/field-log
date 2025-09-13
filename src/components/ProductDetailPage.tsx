@@ -27,7 +27,7 @@ const PRODUCT_DATA = {
           More than sites of production, these talleres embody generational
           skill, cultural resilience, and pure artistry. This book is not just
           an archive; it is an invitation to immerse in craftsmanship as it
-          exists today. This is a limited run of 250 copies.`,
+          exists today. This is a limited book run of 250 copies.`,
     designTeam: 'Editorial Design by Annick Maria',
     manufacturer: 'All images shot on Medium Format Film by Pedro Pablo ',
     technicalDesigner: 'Printed in Mexico by Nocaut LLC ',
@@ -40,7 +40,7 @@ const PRODUCT_DATA = {
     price: '$210 USD',
     images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
     description: `The Darkslide Belt is a refined take on the classic utility belt, designed with photographers in mind. Crafted from high-quality 100% Peruvian leather, this belt features a dedicated darkslide pocket and secure snap loops to hold rolls of film, making it an ideal companion for both analog and hybrid shooters.`,
-    description2: `Whether you're working in a fast-paced studio or shooting on location, the Darkslide Belt ensures that your essential tools are always within reach.`,
+    description2: `Whether you're working in a fast-paced studio or shooting on location, the Darkslide Belt ensures that your essential tools are always within reach. This is a limited run of 30 belts.`,
     designTeam: 'Creative Direction: Pedro Pablo | MDE, COL',
     manufacturer: 'Art Direction: Annick Saralegui | NYC, USA',
     technicalDesigner: 'Technical Design: Tom Chaverra | MDE, USA',
