@@ -37,7 +37,7 @@ const PRODUCT_DATA = {
     id: 'belt',
     name: 'DARKSLIDE BELT',
     subtitle: 'Burgundy',
-    price: '$198 USD',
+    price: '$210 USD',
     images: ['/images/belt1.jpg', '/images/belt2.jpg', '/images/belt3.jpg'],
     description: `The Darkslide Belt is a refined take on the classic utility belt, designed with photographers in mind. Crafted from high-quality 100% Peruvian leather, this belt features a dedicated darkslide pocket and secure snap loops to hold rolls of film, making it an ideal companion for both analog and hybrid shooters.`,
     description2: `Whether you're working in a fast-paced studio or shooting on location, the Darkslide Belt ensures that your essential tools are always within reach.`,
@@ -227,7 +227,11 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
                 <p>{product.copyEdited}</p>
               </div>
               <a
-                href="https://shopify.com"
+                href={
+                  product.id === 'book'
+                    ? 'https://udsbfd-e7.myshopify.com/cart/45098492297413:1?channel=buy_button'
+                    : 'https://udsbfd-e7.myshopify.com/cart/45098493280453:1?channel=buy_button'
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between rounded-md border border-black bg-black p-3 text-white transition-colors hover:bg-gray-800"

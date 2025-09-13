@@ -21,7 +21,7 @@ const SHOP_PRODUCTS = [
     id: 'belt',
     name: 'DARKSLIDE BELT',
     subtitle: 'Burgundy',
-    price: '$198 USD',
+    price: '$210 USD',
     image: '/images/belt1.jpg', // Using one of the field log images for the belt
     description: 'Handcrafted leather belt with traditional artisan techniques',
   },
@@ -219,7 +219,13 @@ const ShopPage: React.FC = () => {
                     {/* Add to Cart Button */}
                     <div className="mb-4 w-full max-w-sm">
                       <a
-                        href={`/shop/${product.id}`}
+                        href={
+                          product.id === 'book'
+                            ? 'https://udsbfd-e7.myshopify.com/cart/45098492297413:1?channel=buy_button'
+                            : 'https://udsbfd-e7.myshopify.com/cart/45098493280453:1?channel=buy_button'
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-2 text-black transition-colors hover:bg-black hover:text-white"
                       >
                         <span
@@ -303,7 +309,13 @@ const ShopPage: React.FC = () => {
                           {/* Buy Now Button */}
                           <div className="flex justify-center py-4">
                             <a
-                              href={`/shop/${product.id}`}
+                              href={
+                                product.id === 'book'
+                                  ? 'https://udsbfd-e7.myshopify.com/cart/45098492297413:1?channel=buy_button'
+                                  : 'https://udsbfd-e7.myshopify.com/cart/45098493280453:1?channel=buy_button'
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="flex w-full cursor-none items-center justify-between rounded-md border border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
                             >
                               <span
