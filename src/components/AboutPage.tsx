@@ -21,14 +21,14 @@ const magazineSpreads = [
   },
   {
     id: 2,
-    sidebarImage: '/images/window2.jpg',
+    sidebarImage: '/images/mountain2.jpg',
     slideshowImage: '/images/about/shore.png',
     title: 'WHAT TO EXPECT',
     attribution: 'CHOCLOCO, PERÚ',
   },
   {
     id: 3,
-    sidebarImage: '/images/clouds2.jpg',
+    sidebarImage: '/images/window2.jpg',
     slideshowImage: '/images/about/blur.png',
     title: 'MANIFESTO',
     attribution: 'HUANCAVELICA, PERÚ',
@@ -142,10 +142,10 @@ const AboutPage: React.FC = () => {
                 <Image
                   src={currentSlide.sidebarImage}
                   alt="Header image"
-                  width={200}
-                  height={200}
+                  width={500}
+                  height={500}
                   className="h-full w-full object-cover"
-                  style={{ height: '600px', width: 'auto' }}
+                  style={{ height: '500px', width: 'auto' }}
                 />
               </div>
             </div>
