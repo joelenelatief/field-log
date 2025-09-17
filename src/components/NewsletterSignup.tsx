@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { neueHaasDisplay, abcRomMono } from '@/lib/fonts';
+import { neueHaasDisplay, abcRomMono, halTimezone } from '@/lib/fonts';
 
 interface NewsletterSignupProps {
   className?: string;
@@ -54,7 +54,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <h2
-            className={`mb-4 text-2xl font-bold text-black ${neueHaasDisplay.className}`}
+            className={`mb-4 text-2xl font-bold text-black italic ${halTimezone.className}`}
           >
             [STAY CONNECTED]
           </h2>
