@@ -54,12 +54,12 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <h2
-            className={`mb-4 text-2xl font-bold text-black italic ${halTimezone.className}`}
+            className={`mb-4 text-2xl font-bold text-black ${neueHaasDisplay.className}`}
           >
             [STAY CONNECTED]
           </h2>
           <p
-            className={`mx-auto max-w-2xl text-gray-600 ${abcRomMono.className}`}
+            className={`mx-auto max-w-2xl text-gray-600 italic ${halTimezone.className}`}
           >
             Sign up for updates on new releases, stories from the field, and
             exclusive content.
@@ -103,7 +103,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         </form>
 
         <div className="mt-8 text-center">
-          <p className={`text-xs text-gray-500 ${abcRomMono.className}`}>
+          <p className={`text-xs text-gray-500 italic ${abcRomMono.className}`}>
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>

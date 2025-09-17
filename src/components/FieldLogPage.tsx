@@ -143,7 +143,7 @@ const FieldLogPage: React.FC = () => {
                     <button
                       key={index}
                       onClick={() => handleNumberClick(index)}
-                      className={`cursor-none transition-all duration-300 ${
+                      className={`cursor-pointer transition-all duration-300 hover:text-black ${
                         activeNumberIndex === index
                           ? 'text-black'
                           : 'text-gray-400'
@@ -204,7 +204,7 @@ const FieldLogPage: React.FC = () => {
                       }`}
                     >
                       <span
-                        className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                        className={`text-sm font-bold ${neueHaasDisplay.className} hover:`}
                       >
                         [{num}]
                       </span>
@@ -241,7 +241,7 @@ const FieldLogPage: React.FC = () => {
                         <button
                           key={index}
                           onClick={() => handleNumberClick(index)}
-                          className={`cursor-none transition-all duration-300 ${
+                          className={`transition-all duration-300 hover:cursor-pointer hover:text-black ${
                             activeNumberIndex === index
                               ? 'text-black'
                               : 'text-gray-400'
@@ -262,7 +262,7 @@ const FieldLogPage: React.FC = () => {
                         <button
                           key={index + 3}
                           onClick={() => handleNumberClick(index + 3)}
-                          className={`cursor-none transition-all duration-300 ${
+                          className={`cursor-none transition-all duration-300 hover:cursor-pointer hover:text-black ${
                             activeNumberIndex === index + 3
                               ? 'text-black'
                               : 'text-gray-400'
