@@ -206,13 +206,13 @@ const ShopPage: React.FC = () => {
                     </div>
 
                     {/* Add to Cart Button */}
-                    <div className="mb-4 w-full max-w-sm rounded-md bg-black">
+                    <div className="mb-4 w-full max-w-sm rounded-md bg-black py-1">
                       <a
                         href={`/shop/${product.id}`}
-                        className="flex w-full cursor-none items-center justify-between rounded-md border-1 border-black px-6 py-2 text-white transition-colors hover:bg-black hover:text-white"
+                        className="flex w-full cursor-none items-center justify-between rounded-md border-1 border-black px-6 py-2 text-white transition-colors"
                       >
                         <span
-                          className={`w-full text-center text-base font-medium ${neueHaasDisplay.className}`}
+                          className={`w-full text-center text-base font-medium text-white ${neueHaasDisplay.className}`}
                         >
                           LEARN MORE
                         </span>
