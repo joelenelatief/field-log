@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { CustomCursor } from './CustomCursor';
+import NewsletterSignup from './NewsletterSignup';
 import { neueHaasDisplay, abcRomMono } from '@/lib/fonts';
 import { gsap } from 'gsap';
 
@@ -362,6 +363,9 @@ const FieldLogPage: React.FC = () => {
               ))}
             </div>
           </div>
+
+          {/* Newsletter Signup */}
+          <NewsletterSignup />
 
           {/* Footer - Hidden on mobile home page since it's added after AboutSection in Layout */}
           <footer className="hidden border-t border-gray-200 px-4 py-4 lg:block">
