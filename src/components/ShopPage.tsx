@@ -6,6 +6,7 @@ import { CustomCursor } from './CustomCursor';
 import { neueHaasDisplay, halTimezone } from '@/lib/fonts';
 import Image from 'next/image';
 import Link from 'next/link';
+import NewsletterSignup from './NewsletterSignup';
 
 // Shop products data
 const SHOP_PRODUCTS = [
@@ -161,18 +162,6 @@ const ShopPage: React.FC = () => {
             {/* 3-Column Layout: Numbers | Image | Product Info */}
             <div className="mb-4 min-h-[400px] lg:mb-8 lg:min-h-[600px]">
               {/* Product Info for Mobile - Above Image */}
-              {/* <div className="mb-4 pb-4 text-center lg:hidden">
-                <h3
-                  className={`mb-2 text-lg font-bold text-black ${neueHaasDisplay.className}`}
-                >
-                  {currentProduct.name}
-                </h3>
-                <p
-                  className={`text-sm text-gray-600 italic ${halTimezone.className}`}
-                >
-                  {currentProduct.subtitle}
-                </p>
-              </div> */}
 
               {/* Mobile Layout - Stacked Products */}
               <div className="space-y-12 lg:hidden">
@@ -184,14 +173,14 @@ const ShopPage: React.FC = () => {
                     {/* Product Info */}
                     <div className="mb-4 text-center">
                       <h3
-                        className={`mb-2 text-lg font-bold text-black ${neueHaasDisplay.className}`}
+                        className={`text-lg font-bold text-black ${neueHaasDisplay.className}`}
                       >
                         {product.name}
                       </h3>
                       <p
-                        className={`text-sm text-gray-600 italic ${halTimezone.className}`}
+                        className={`mb-1 text-sm text-gray-600 italic ${halTimezone.className}`}
                       >
-                        {product.subtitle}
+                        {product.subtitle} - {product.price}
                       </p>
                     </div>
 
@@ -217,26 +206,15 @@ const ShopPage: React.FC = () => {
                     </div>
 
                     {/* Add to Cart Button */}
-                    <div className="mb-4 w-full max-w-sm">
+                    <div className="mb-4 w-full max-w-sm rounded-md bg-black">
                       <a
-                        href={
-                          product.id === 'book'
-                            ? 'https://udsbfd-e7.myshopify.com/cart/45098492297413:1?channel=buy_button'
-                            : 'https://udsbfd-e7.myshopify.com/cart/45098493280453:1?channel=buy_button'
-                        }
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex w-full cursor-none items-center justify-between border-2 border-black px-6 py-2 text-black transition-colors hover:bg-black hover:text-white"
+                        href={`/shop/${product.id}`}
+                        className="flex w-full cursor-none items-center justify-between rounded-md border-1 border-black px-6 py-2 text-white transition-colors hover:bg-black hover:text-white"
                       >
                         <span
-                          className={`text-base font-bold ${neueHaasDisplay.className}`}
+                          className={`w-full text-center text-base font-medium ${neueHaasDisplay.className}`}
                         >
-                          BUY NOW
-                        </span>
-                        <span
-                          className={`text-base font-bold ${neueHaasDisplay.className}`}
-                        >
-                          {product.price}
+                          LEARN MORE
                         </span>
                       </a>
                     </div>
@@ -307,26 +285,15 @@ const ShopPage: React.FC = () => {
                           </Link>
 
                           {/* Buy Now Button */}
-                          <div className="flex justify-center py-4">
+                          <div className="mt-2 flex justify-center rounded-md bg-none text-black hover:bg-black hover:text-white">
                             <a
-                              href={
-                                product.id === 'book'
-                                  ? 'https://udsbfd-e7.myshopify.com/cart/45098492297413:1?channel=buy_button'
-                                  : 'https://udsbfd-e7.myshopify.com/cart/45098493280453:1?channel=buy_button'
-                              }
-                              target="_blank"
-                              rel="noopener noreferrer"
+                              href={`/shop/${product.id}`}
                               className="flex w-full cursor-none items-center justify-between rounded-md border border-black px-6 py-3 text-black transition-colors hover:bg-black hover:text-white"
                             >
                               <span
-                                className={`text-sm font-bold ${neueHaasDisplay.className}`}
+                                className={`w-full text-center text-sm font-medium ${neueHaasDisplay.className}`}
                               >
-                                ADD TO CART
-                              </span>
-                              <span
-                                className={`text-sm font-bold ${neueHaasDisplay.className}`}
-                              >
-                                {product.price}
+                                LEARN MORE
                               </span>
                             </a>
                           </div>
@@ -340,14 +307,19 @@ const ShopPage: React.FC = () => {
                 <div className="sticky top-0 ml-4 h-screen lg:col-span-1">
                   <div className="flex h-full flex-col justify-center text-left">
                     <h3
-                      className={`mb-2 text-xl font-bold text-black ${neueHaasDisplay.className}`}
+                      className={`text-xl font-bold text-black ${neueHaasDisplay.className}`}
                     >
                       {SHOP_PRODUCTS[activeProductIndex].name}
                     </h3>
                     <p
-                      className={`text-md mb-4 text-gray-600 italic ${halTimezone.className}`}
+                      className={`text-md mb-2 text-gray-600 italic ${halTimezone.className}`}
                     >
                       {SHOP_PRODUCTS[activeProductIndex].subtitle}
+                    </p>
+                    <p
+                      className={`text-md mb-4 text-gray-600 ${halTimezone.className}`}
+                    >
+                      {SHOP_PRODUCTS[activeProductIndex].price}
                     </p>
                   </div>
                 </div>
@@ -396,33 +368,9 @@ const ShopPage: React.FC = () => {
               </div>
             </div> */}
           </div>
-
-          {/* Newsletter signup */}
-          {/* <div className="rounded-md bg-neutral-100 p-8 text-center text-black">
-            <h2
-              className={`mb-4 text-2xl font-bold ${neueHaasDisplay.className}`}
-            >
-              JOIN OUR WAITLIST
-            </h2>
-            <p className={`mb-6 text-sm ${halTimezone.className} italic`}>
-              Be the first to know when new products are available and receive
-              exclusive offers.
-            </p>
-            <div className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 rounded-sm border border-neutral-300 px-4 py-2 text-black focus:border-black focus:outline-none"
-              />
-              <button
-                className={`rounded-sm bg-black px-6 py-2 text-sm font-bold text-white transition-opacity hover:opacity-80 ${neueHaasDisplay.className}`}
-              >
-                SUBSCRIBE
-              </button>
-            </div>
-          </div> */}
         </div>
       </div>
+      <NewsletterSignup />
       <div className="mt-8 border-t border-gray-300 pt-4 pb-4">
         <div className="flex flex-col space-y-2 px-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
           <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>

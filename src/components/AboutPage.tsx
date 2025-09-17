@@ -9,6 +9,7 @@ import Image from 'next/image';
 import DearReaderPage from './DearReaderPage';
 import WhatToExpectPage from './WhatToExpectPage';
 import ManifestoPage from './ManifestoPage';
+import NewsletterSignup from './NewsletterSignup';
 
 // Magazine spreads data
 const magazineSpreads = [
@@ -272,6 +273,7 @@ const AboutPage: React.FC = () => {
             </div>
           </div>
         </div>
+        <NewsletterSignup />
         <div className="mt-8 border-t border-gray-300 pt-4 pb-4">
           <div className="flex flex-col space-y-2 px-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
             <span className={neueHaasDisplay.className}>FIELD LOG LLC</span>
