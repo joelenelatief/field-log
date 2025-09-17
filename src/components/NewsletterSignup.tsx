@@ -27,7 +27,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       // Honeypot field to prevent spam
       formData.append('b_2891fcc7cdf1cd165d0de4b78_fa64c5ebc3', '');
 
-      const response = await fetch(
+      await fetch(
         'https://field-log.us16.list-manage.com/subscribe/post?u=2891fcc7cdf1cd165d0de4b78&id=fa64c5ebc3&f_id=005e1de1f0',
         {
           method: 'POST',
@@ -39,7 +39,8 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       setMessage('Thank you for subscribing!');
       setEmail('');
     } catch (error) {
-      setMessage('Thank you for subscribing!');
+      console.error(error);
+      setMessage('There was an error subscribing to the newsletter.');
       setEmail('');
     } finally {
       setIsSubmitting(false);
