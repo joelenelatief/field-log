@@ -134,7 +134,7 @@ const AboutPage: React.FC = () => {
             <p
               className={`text-md mb-4 text-gray-600 italic ${halTimezone.className}`}
             >
-              Who we are, our values and how to work with us.
+              Who we are, our values, and how to work with us.
             </p>
 
             {/* Large Header Image */}
