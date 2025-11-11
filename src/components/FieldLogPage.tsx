@@ -69,6 +69,8 @@ const FieldLogPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const mainAreaRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -126,6 +128,55 @@ const FieldLogPage: React.FC = () => {
     setActiveNumberIndex(numberIndex);
   };
 
+  // Swipe handlers for mobile
+  const minSwipeDistance = 50;
+  const touchStartY = useRef<number | null>(null);
+  const touchEndY = useRef<number | null>(null);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEndX.current = null;
+    touchEndY.current = null;
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchStartY.current = e.targetTouches[0].clientY;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+    touchEndY.current = e.targetTouches[0].clientY;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current || !touchStartY.current || !touchEndY.current) return;
+    
+    const distanceX = touchStartX.current - touchEndX.current;
+    const distanceY = Math.abs(touchStartY.current - touchEndY.current);
+
+    // Only trigger swipe if horizontal movement is greater than vertical (horizontal swipe)
+    const isHorizontalSwipe = Math.abs(distanceX) > distanceY;
+    
+    if (!isHorizontalSwipe) return;
+
+    const isLeftSwipe = distanceX > minSwipeDistance;
+    const isRightSwipe = distanceX < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      // Swipe left - go to next image
+      const nextIndex = (activeSpreadIndex + 1) % fieldLogSpreads.length;
+      setActiveSpreadIndex(nextIndex);
+      // Update number index to match the new spread (same as thumbnail click behavior)
+      setActiveNumberIndex(nextIndex);
+    } else if (isRightSwipe) {
+      // Swipe right - go to previous image
+      const prevIndex =
+        activeSpreadIndex === 0
+          ? fieldLogSpreads.length - 1
+          : activeSpreadIndex - 1;
+      setActiveSpreadIndex(prevIndex);
+      // Update number index to match the new spread (same as thumbnail click behavior)
+      setActiveNumberIndex(prevIndex);
+    }
+  };
+
   return (
     <>
       <CustomCursor />
@@ -160,16 +211,22 @@ const FieldLogPage: React.FC = () => {
 
                 {/* Center Image */}
                 <div className="relative flex flex-1 justify-center">
-                  <div className="relative">
+                  <div
+                    className="relative touch-pan-y"
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                  >
                     <div className="relative inline-block border-[8px] border-black">
                       <Image
                         src={currentSpread.image}
                         alt={`Field Log - ${currentSpread.location}`}
                         width={800}
                         height={800}
-                        className="object-cover"
+                        className="object-cover select-none"
                         priority
                         style={{ height: '300px', width: 'auto' }}
+                        draggable={false}
                       />
                     </div>
 
@@ -281,16 +338,22 @@ const FieldLogPage: React.FC = () => {
 
                 {/* Column 2: Main Image (Center) */}
                 <div className="relative flex justify-center lg:col-span-3">
-                  <div className="relative">
+                  <div
+                    className="relative touch-pan-y"
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                  >
                     <div className="relative inline-block border-[14px] border-black">
                       <Image
                         src={currentSpread.image}
                         alt={`Field Log - ${currentSpread.location}`}
                         width={1200}
                         height={1200}
-                        className="object-cover"
+                        className="object-cover select-none"
                         priority
                         style={{ height: '500px', width: 'auto' }}
+                        draggable={false}
                       />
                     </div>
 
